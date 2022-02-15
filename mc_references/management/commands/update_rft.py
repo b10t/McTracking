@@ -224,16 +224,6 @@ def update_rft_rlw_dep(service,
                     pk=str(dep["RLW_CODE"]).rjust(2, "0")),
                 update_date=convert_str_to_datetime(dep['UPDATE_DATE']))
 
-        # <RDEP_IDE > 5111 < /RDEP_IDE >
-        # <RDEP_CODE > 11 < /RDEP_CODE >
-        # <RDEP_NAME > Туапсинское < /RDEP_NAME >
-        # <RDEP_FULL_NAME > Туапсинское < /RDEP_FULL_NAME >
-        # <RLW_CODE > 51 < /RLW_CODE >
-        # <UPDATE_DATE > 18.11.2021 15: 49: 52 < /UPDATE_DATE >
-
-
-('rdep_ide', 'rdep_code', 'rdep_name', 'rdep_full_name', 'rlw_code', 'update_date', )
-
 
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
