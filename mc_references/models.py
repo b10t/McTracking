@@ -135,3 +135,43 @@ class RftCargoEtsng(models.Model):
         verbose_name = 'Груз'
         verbose_name_plural = 'Грузы'
         ordering = ['crg_code']
+
+
+class RftRailway(models.Model):
+    """Справочник дорог."""
+    rlw_code = models.CharField(
+        primary_key=True,
+        max_length=2,
+        verbose_name='Код дороги'
+    )
+    rlw_name = models.CharField(
+        max_length=3,
+        verbose_name='Краткое наименование дороги'
+    )
+    rlw_full_name = models.CharField(
+        max_length=100,
+        verbose_name='Наименование дороги'
+    )
+    cntr_ide = models.ForeignKey(
+        RftCountry,
+        on_delete=models.PROTECT,
+        verbose_name='Страна'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.rlw_code} ({self.rlw_name}) - {self.rlw_full_name}'
+
+    class Meta:
+        db_table = 'RFT_RAILWAY'
+        verbose_name = 'Дорога'
+        verbose_name_plural = 'Дороги'
+        ordering = ['rlw_name']
+
+        # <RLW_CODE > 13 < /RLW_CODE >
+        # <RLW_NAME > БЕЛ < /RLW_NAME >
+        # <RLW_FULL_NAME > БЕЛОРУССКАЯ < /RLW_FULL_NAME >
+        # <CNTR_IDE > 112 < /CNTR_IDE >
