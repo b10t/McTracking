@@ -111,8 +111,8 @@ def update_rft_country(service,
     with transaction.atomic():
         for country in response:
             country_new, _ = RftCountry.objects.get_or_create(
-                cnt_ide=int(country['CNT_IDE']),
-                cnt_name=country['CNT_NAME'],
+                cnt_ide=f'{country["CNT_IDE"]:03}',
+                cnt_name=str(country['CNT_NAME']).capitalize(),
                 update_date=convert_str_to_datetime(country['UPDATE_DATE']))
 
 

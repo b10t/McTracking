@@ -48,8 +48,9 @@ class RftFirmCode(models.Model):
 
 class RftCountry(models.Model):
     """Справочник стран."""
-    cnt_ide = models.IntegerField(
+    cnt_ide = models.CharField(
         primary_key=True,
+        max_length=3,
         verbose_name='Код страны'
     )
     cnt_name = models.CharField(
