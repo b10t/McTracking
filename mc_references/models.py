@@ -154,6 +154,8 @@ class RftRailway(models.Model):
     )
     cntr_ide = models.ForeignKey(
         RftCountry,
+        null=True,
+        blank=True,
         on_delete=models.PROTECT,
         verbose_name='Страна'
     )
@@ -208,10 +210,3 @@ class RftRlwDep(models.Model):
         verbose_name = 'Отделение'
         verbose_name_plural = 'Отделения'
         ordering = ['rdep_ide']
-
-        # <RDEP_IDE > 5111 < /RDEP_IDE >
-        # <RDEP_CODE > 11 < /RDEP_CODE >
-        # <RDEP_NAME > Туапсинское < /RDEP_NAME >
-        # <RDEP_FULL_NAME > Туапсинское < /RDEP_FULL_NAME >
-        # <RLW_CODE > 51 < /RLW_CODE >
-        # <UPDATE_DATE > 18.11.2021 15: 49: 52 < /UPDATE_DATE >
