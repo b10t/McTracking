@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.timezone import localtime
 from mc_references.models import (RftCargoEtsng, RftCountry, RftFirmCode,
-                                  RftOperation)
+                                  RftOperation, RftRailway)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -111,7 +111,7 @@ def update_rft_country(service,
     with transaction.atomic():
         for country in response:
             country_new, _ = RftCountry.objects.get_or_create(
-                cnt_ide=f'{country["CNT_IDE"]:03}',
+                cnt_ide=str(country["CNT_IDE"]).rjust(3, "0"),
                 cnt_name=str(country['CNT_NAME']).capitalize(),
                 update_date=convert_str_to_datetime(country['UPDATE_DATE']))
 
@@ -168,6 +168,34 @@ def update_rft_cargo_etsng(service,
                 update_date=convert_str_to_datetime(cargo['UPDATE_DATE']))
 
 
+def update_rft_railway(service,
+                       wsdl_user,
+                       wsdl_password,
+                       begin_date,
+                       end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_RAILWAY
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for railway in response:
+            railway_new, _ = RftRailway.objects.get_or_create(
+                rlw_code=railway['RLW_CODE'],
+                rlw_name=railway['RLW_NAME'],
+                rlw_full_name=str(railway['RLW_FULL_NAME']).upper(),
+                cntr_ide=RftCountry.objects.get(
+                    pk=str(railway["CNTR_IDE"]).rjust(3, "0")),
+                update_date=convert_str_to_datetime(railway['UPDATE_DATE']))
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -187,11 +215,11 @@ class Command(BaseCommand):
         #                      WSDL_PASSWORD,
         #                      begin_date,
         #                      end_date)
-        update_rft_country(mc_tracking_service,
-                           WSDL_USER,
-                           WSDL_PASSWORD,
-                           begin_date,
-                           end_date)
+        # update_rft_country(mc_tracking_service,
+        #                    WSDL_USER,
+        #                    WSDL_PASSWORD,
+        #                    begin_date,
+        #                    end_date)
         # update_rft_operation(mc_tracking_service,
         #                      WSDL_USER,
         #                      WSDL_PASSWORD,
@@ -202,6 +230,11 @@ class Command(BaseCommand):
         #                        WSDL_PASSWORD,
         #                        begin_date,
         #                        end_date)
+        update_rft_railway(mc_tracking_service,
+                           WSDL_USER,
+                           WSDL_PASSWORD,
+                           begin_date,
+                           end_date)
 
         print(datetime.now() - start_time)
 
