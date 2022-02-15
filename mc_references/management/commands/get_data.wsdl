@@ -1,0 +1,2447 @@
+<definitions name="GET_DATA"
+    targetNamespace="http://xmlns.oracle.com/orawsv/RWC_INF/GET_DATA"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://xmlns.oracle.com/orawsv/RWC_INF/GET_DATA"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://xmlns.oracle.com/orawsv/RWC_INF/GET_DATA"
+     elementFormDefault="qualified">
+      <xsd:element name="GET_DATA_RWC_DISL_DEPInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_ST_START_NO-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RWC_DISL_DEPOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="RWC_DISL" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>      <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="ST_OPER_NO" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_IDE_COD" minOccurs="0" maxOccurs="1"/>    <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="OPER_NO_RCODE" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="DATE_OPER" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="NKL_POGR" minOccurs="0" maxOccurs="1"/>       <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="DATE_B" minOccurs="0" maxOccurs="1"/>       <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_E" minOccurs="0" maxOccurs="1"/>      <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_START_NO" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_START_COD" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="CARGO_NO" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="WT_WEIGHT_ADD" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="ST_DEST_NO" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_DEST_COD" minOccurs="0" maxOccurs="1"/>    <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_NO" minOccurs="0" maxOccurs="1"/>          <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_IND" minOccurs="0" maxOccurs="1"/>          <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="RWC_ORD_NUM" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="OTGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>   <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="POGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>    <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_DATE_EXPIRE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CURR_T_DIST" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RWC_DISL_ARRInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_ST_DEST_NO-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RWC_DISL_ARROutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="RWC_DISL" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>      <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="ST_OPER_NO" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_IDE_COD" minOccurs="0" maxOccurs="1"/>    <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="OPER_NO_RCODE" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="DATE_OPER" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="NKL_POGR" minOccurs="0" maxOccurs="1"/>       <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="DATE_B" minOccurs="0" maxOccurs="1"/>       <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_E" minOccurs="0" maxOccurs="1"/>      <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_START_NO" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_START_COD" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="CARGO_NO" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="WT_WEIGHT_ADD" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="ST_DEST_NO" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_DEST_COD" minOccurs="0" maxOccurs="1"/>    <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_NO" minOccurs="0" maxOccurs="1"/>          <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_IND" minOccurs="0" maxOccurs="1"/>          <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="RWC_ORD_NUM" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="OTGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>   <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="POGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>    <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_DATE_EXPIRE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CURR_T_DIST" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RWC_DISLInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RWC_DISLOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="RWC_DISL" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>   <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="ST_OPER_NO" minOccurs="0" maxOccurs="1"/>   <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="OPER_NO_RCODE" minOccurs="0" maxOccurs="1"/>  <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="DATE_OPER" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ARRV_DATE_POGR" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_RASCR" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="NKL_POGR" minOccurs="0" maxOccurs="1"/>      <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_LINK_INV_NUM_CHILD" minOccurs="0" maxOccurs="1"/>  <!-- 40 byte -->
+                          <xsd:element type="xsd:string" name="DATE_L" minOccurs="0" maxOccurs="1"/>            <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_START_NO" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="CARGO_NO" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="WT_WEIGHT_ADD" minOccurs="0" maxOccurs="1"/>  <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="ST_DEST_NO" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="PR_ETR_LINK_INV_CHILD" minOccurs="0" maxOccurs="1"/>  <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_NO" minOccurs="0" maxOccurs="1"/>       <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_IND" minOccurs="0" maxOccurs="1"/>      <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="PR_GRUJ" minOccurs="0" maxOccurs="1"/>       <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="PR_WORK" minOccurs="0" maxOccurs="1"/>        <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="OTGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>  <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="POGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>  <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_DATE_EXPIRE" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="RCV_NO" minOccurs="0" maxOccurs="1"/>           <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="ADAPT_NAME" minOccurs="0" maxOccurs="1"/>    <!-- ?? -->
+                          <xsd:element type="xsd:string" name="SN_PROGNOZ_TEK" minOccurs="0" maxOccurs="1"/>    <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="TARIFF_DIST" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="TIME_TO_DIST" minOccurs="0" maxOccurs="1"/>     <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="CURR_T_DIST" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="CURR_TIME_TO_DIST" minOccurs="0" maxOccurs="1"/>  <!-- 5 byte -->
+						  <xsd:element type="xsd:string" name="DATE_OPER_RLW" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+						  <xsd:element type="xsd:string" name="DATE_L_ZD" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+						  <xsd:element type="xsd:string" name="DAYS_TILL_REP_LIFE" minOccurs="0" maxOccurs="1"/>  <!-- 5 byte -->
+						  <xsd:element type="xsd:string" name="DATE_NEXT_REP_LIFE" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_STATIONInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_STATIONOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="ST_CODE" minOccurs="0" maxOccurs="1"/>     <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="ST_FULL_NAME" minOccurs="0" maxOccurs="1"/>    <!-- 40 byte -->
+                          <xsd:element type="xsd:string" name="RLW_CODE" minOccurs="0" maxOccurs="1"/>       <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="RDEP_IDE" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="CNTR_IDE" minOccurs="0" maxOccurs="1"/>   <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="ST_CODE_6" minOccurs="0" maxOccurs="1"/>    <!-- 6 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_SERVICE_TYPEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_SERVICE_TYPEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="SRVT_IDE" minOccurs="0" maxOccurs="1"/>   <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="SRVT_NAME" minOccurs="0" maxOccurs="1"/>   <!-- 10 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_TYPEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_TYPEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RT_CODE" minOccurs="0" maxOccurs="1"/>     <!-- 3 byte -->
+                          <xsd:element type="xsd:string" name="RT_NAME" minOccurs="0" maxOccurs="1"/>     <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_OWNERInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_OWNEROutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="OWNER_NO" minOccurs="0" maxOccurs="1"/>            <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="OWNER_NAME" minOccurs="0" maxOccurs="1"/>        <!-- 250 byte -->
+                          <xsd:element type="xsd:string" name="PARENT_OWNER_NO" minOccurs="0" maxOccurs="1"/>     <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>       <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_MODELInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_MODELOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RM_CODE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="RM_OSOB" minOccurs="0" maxOccurs="1"/>    <!-- 150 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_GROUPInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_GROUPOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_GROUP" minOccurs="0" maxOccurs="1"/>        <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="RWC_GROUP_NAME" minOccurs="0" maxOccurs="1"/>  <!-- 250 byte -->
+                          <xsd:element type="xsd:string" name="RWC_PARENT_GROUP" minOccurs="0" maxOccurs="1"/>   <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="RWC_TOP_GROUP" minOccurs="0" maxOccurs="1"/>     <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_FAULT_CAUSEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_FAULT_CAUSEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CAUSE_IDE" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="CAUSE_NAME" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_FAULTInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_FAULTOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="FLT_CODE" minOccurs="0" maxOccurs="1"/> <!-- 3 byte -->
+                          <xsd:element type="xsd:string" name="FLT_NAME" minOccurs="0" maxOccurs="1"/>  <!-- 200 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RWC_CNDInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RWC_CNDOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CND_CODE" minOccurs="0" maxOccurs="1"/>   <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="CND_NAME" minOccurs="0" maxOccurs="1"/>   <!-- 13 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="GET_DATA_RFT_CONT_OWNERInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_CONT_OWNEROutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CONT_OWNER_CODE" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="CONT_OWNER_NAME" minOccurs="0" maxOccurs="1"/>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RLW_DEPInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RLW_DEPOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RDEP_IDE" minOccurs="0" maxOccurs="1"/>      <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="RDEP_CODE" minOccurs="0" maxOccurs="1"/>    <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="RDEP_NAME" minOccurs="0" maxOccurs="1"/>    <!-- 30 byte -->
+                          <xsd:element type="xsd:string" name="RDEP_FULL_NAME" minOccurs="0" maxOccurs="1"/> <!-- 100 byte -->
+                          <xsd:element type="xsd:string" name="RLW_CODE" minOccurs="0" maxOccurs="1"/>     <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_REPAIR_TYPEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_REPAIR_TYPEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RPT_CODE" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="RPT_NAME" minOccurs="0" maxOccurs="1"/>    <!-- 100 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_RAILWAYInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_RAILWAYOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RLW_CODE" minOccurs="0" maxOccurs="1"/>        <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="RLW_NAME" minOccurs="0" maxOccurs="1"/>        <!-- 3 byte -->
+                          <xsd:element type="xsd:string" name="RLW_FULL_NAME" minOccurs="0" maxOccurs="1"/>   <!-- 40 byte -->
+                          <xsd:element type="xsd:string" name="CNTR_IDE" minOccurs="0" maxOccurs="1"/>        <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_OPERATIONInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_OPERATIONOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="TRANSP_TYPE" minOccurs="0" maxOccurs="1"/>    <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="O_CODE" minOccurs="0" maxOccurs="1"/>      <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="O_NAME" minOccurs="0" maxOccurs="1"/>       <!-- 100 byte -->
+                          <xsd:element type="xsd:string" name="O_DESCRIPTION" minOccurs="0" maxOccurs="1"/>  <!-- 100 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_FIRM_CODEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_FIRM_CODEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="OKPO" minOccurs="0" maxOccurs="1"/>           <!-- 30 byte -->
+                          <xsd:element type="xsd:string" name="FRM_SHORT_NAME" minOccurs="0" maxOccurs="1"/> <!-- 2000 byte -->
+                          <xsd:element type="xsd:string" name="FRM_NAME" minOccurs="0" maxOccurs="1"/>      <!-- 2000 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                          <xsd:element name="CODE" maxOccurs="unbounded" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element type="xsd:string" name="FRCT_IDE" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                                <xsd:element type="xsd:string" name="FRC_CODE" minOccurs="0" maxOccurs="1"/>   <!-- 40 byte -->
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_DEPOInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_DEPOOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="DP_CODE" minOccurs="0" maxOccurs="1"/>      <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="DP_NAME" minOccurs="0" maxOccurs="1"/>       <!-- 100 byte -->
+                          <xsd:element type="xsd:string" name="DP_UPDATE_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_COUNTRYInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_COUNTRYOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:short" name="CNT_IDE" minOccurs="0" maxOccurs="1"/>       <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="CNT_NAME" minOccurs="0" maxOccurs="1"/>     <!-- 66 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_CONT_TYPEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_CONT_TYPEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CT_CODE" minOccurs="0" maxOccurs="1"/>    <!-- 255 byte -->
+                          <xsd:element type="xsd:string" name="CT_NAME" minOccurs="0" maxOccurs="1"/>    <!-- 255 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/> <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_RFT_CARGO_ETSNGInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_RFT_CARGO_ETSNGOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REF" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CRG_CODE" minOccurs="0" maxOccurs="1"/>     <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CRG_NAME" minOccurs="0" maxOccurs="1"/>   <!-- 120 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_REPAIRInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_REPAIROutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="REPAIR" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>    <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="OWNER_NO" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="RWC_GROUP" minOccurs="0" maxOccurs="1"/>   <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="RWC_RT_IDE" minOccurs="0" maxOccurs="1"/>   <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="DATE_NRP" minOccurs="0" maxOccurs="1"/>    <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_NRP" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="DEPOT_NO" minOccurs="0" maxOccurs="1"/>     <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="DATE_RPR_B" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_RPR_E" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_RPR" minOccurs="0" maxOccurs="1"/>        <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="DEPOT_NO_REP" minOccurs="0" maxOccurs="1"/>  <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="RPR_TYPE_NO" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="FAULT_NO1" minOccurs="0" maxOccurs="1"/>     <!-- 3 byte -->
+                          <xsd:element type="xsd:string" name="FAULT_NO2" minOccurs="0" maxOccurs="1"/>     <!-- 3 byte -->
+                          <xsd:element type="xsd:string" name="FAULT_NO3" minOccurs="0" maxOccurs="1"/>     <!-- 3 byte -->
+                          <xsd:element type="xsd:string" name="CAUSE_FAULT1" minOccurs="0" maxOccurs="1"/>     <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="CAUSE_FAULT2" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="CAUSE_FAULT3" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+						  <xsd:element type="xsd:string" name="DATE_RPR_E_DATE_NRP" minOccurs="0" maxOccurs="1"/>    <!-- 7 byte -->
+						  <xsd:element type="xsd:string" name="DATE_RPR_E_MM" minOccurs="0" maxOccurs="1"/>    <!-- 7 byte -->
+						  <xsd:element type="xsd:string" name="SUM1" minOccurs="0" maxOccurs="1"/>    <!-- 21 byte -->
+						  <xsd:element type="xsd:string" name="SOST_B_NRP" minOccurs="0" maxOccurs="1"/>    <!-- 1 byte -->
+						  <xsd:element type="xsd:string" name="ST_START_PREV_RACE" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+						  <xsd:element type="xsd:string" name="ST_DEST_PREV_RACE" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+						  <xsd:element type="xsd:string" name="DATE_CHANGE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+						  <xsd:element type="xsd:string" name="DATAAVR" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+						  <xsd:element type="xsd:string" name="NOMERSF" minOccurs="0" maxOccurs="1"/>    <!-- 255 byte -->
+						  <xsd:element type="xsd:string" name="DATASF" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+						  <xsd:element type="xsd:string" name="SUM_RPR" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+						  <xsd:element type="xsd:string" name="SUM_RPR_PART" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+						  <xsd:element type="xsd:string" name="SUM_ALL" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+						  <xsd:element type="xsd:string" name="COUNT_PART_HRANENIE" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_PROBEGInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_PROBEGOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="PROBEG" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>    <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="PROBEG_TOTAL" minOccurs="0" maxOccurs="1"/>    <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="PROBEG_OST" minOccurs="0" maxOccurs="1"/>      <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="PROBEG_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="PROBEG_ST" minOccurs="0" maxOccurs="1"/>        <!-- 11 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_PASSPInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_PASSPOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                  <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="TEC" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>     <!-- 8 byte -->
+						  <xsd:element type="xsd:string" name="RWC_GROUP" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="PROD_NO" minOccurs="0" maxOccurs="1"/>        <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="COUNTRY_ATTR" minOccurs="0" maxOccurs="1"/>     <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="CND_CODE" minOccurs="0" maxOccurs="1"/>       <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="FACTORY_ID" minOccurs="0" maxOccurs="1"/>       <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="D0_POSTR" minOccurs="0" maxOccurs="1"/>      <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="RWC_TYPE" minOccurs="0" maxOccurs="1"/>     <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="RWC_TYPE_ETR" minOccurs="0" maxOccurs="1"/>     <!-- 45 byte -->
+                          <xsd:element type="xsd:string" name="NI_TPS" minOccurs="0" maxOccurs="1"/>     <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="MODEL" minOccurs="0" maxOccurs="1"/>      <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CARRYING" minOccurs="0" maxOccurs="1"/>     <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RWC_LN_AXIS" minOccurs="0" maxOccurs="1"/> <!-- 6 byte -->
+						  <xsd:element type="xsd:string" name="RWC_LN_AXIS_13920" minOccurs="0" maxOccurs="1"/>
+						  <xsd:element type="xsd:string" name="RWC_LN_FEET" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="TARA" minOccurs="0" maxOccurs="1"/>        <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="RM_OBJOM" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="OKPO" minOccurs="0" maxOccurs="1"/>           <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="UAN" minOccurs="0" maxOccurs="1"/>             <!-- 5 byte -->
+						  <xsd:element type="xsd:string" name="ETR_TRUSTED_OPERATOR_TEK" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="RWC2_LS_E_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="RWC2_RWC_X_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="SEL" minOccurs="0" maxOccurs="1"/>                <!-- 1 byte -->
+						  <xsd:element type="xsd:string" name="D0_RPR_NEXT" minOccurs="0" maxOccurs="1"/>       <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="RPR_TYPE_NEXT" minOccurs="0" maxOccurs="1"/>    <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="D0_DEP_R" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="M_DEP_R" minOccurs="0" maxOccurs="1"/>      <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="D0_KAP_R" minOccurs="0" maxOccurs="1"/>   <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="M_KAP_R" minOccurs="0" maxOccurs="1"/>    <!-- 4 byte -->
+						  <xsd:element type="xsd:string" name="OWNER_UAN_CODE" minOccurs="0" maxOccurs="1"/>
+						  <xsd:element type="xsd:string" name="CLIENT_UAN_CODE" minOccurs="0" maxOccurs="1"/>
+						  <xsd:element type="xsd:string" name="DATE_NEXT_DEP_REP" minOccurs="0" maxOccurs="1"/>
+						  <xsd:element type="xsd:string" name="DATE_NEXT_CAP_REP" minOccurs="0" maxOccurs="1"/>
+						  <xsd:element type="xsd:string" name="D0_REG_DATE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+						  <xsd:element type="xsd:string" name="ST_ATTR" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+						  <xsd:element type="xsd:string" name="PRIOR_CARGO" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_DETAILInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_REPAIR_YEAR-VARCHAR2-IN" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+              <xsd:element name="IN_RWC_RT_IDE-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_DETAILOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="WHEEL_PAIR" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>          <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_RT_IDE" minOccurs="0" maxOccurs="1"/>       <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="CARRIAGE_NO" minOccurs="0" maxOccurs="1"/>       <!--1 byte -->
+                          <xsd:element type="xsd:string" name="WHEEL_PAIR_NO" minOccurs="0" maxOccurs="1"/>   <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_NO" minOccurs="0" maxOccurs="1"/>        <!-- 12 byte -->
+                          <xsd:element type="xsd:string" name="FULL_AXIS_NO" minOccurs="0" maxOccurs="1"/>    <!-- 250 byte -->
+                          <xsd:element type="xsd:string" name="JOB_RPR_TYPE" minOccurs="0" maxOccurs="1"/>   <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_INST_DATE" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_INST_DEPOT" minOccurs="0" maxOccurs="1"/>  <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_SURVEY_DATE" minOccurs="0" maxOccurs="1"/> <!-- 6 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_SURVEY_DEPOT" minOccurs="0" maxOccurs="1"/>  <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_MANUF_DATE" minOccurs="0" maxOccurs="1"/>   <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_MANUF_DEPOT" minOccurs="0" maxOccurs="1"/>  <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_TYRE_R" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_FLANGE_R" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_FLATTING_R" minOccurs="0" maxOccurs="1"/>      <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_TYRE_L" minOccurs="0" maxOccurs="1"/>          <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_FLANGE_L" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_FLATTING_L" minOccurs="0" maxOccurs="1"/>     <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="AXIS_CHANGE" minOccurs="0" maxOccurs="1"/>        <!--1 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="SPRING_BEAM" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>       <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_RT_IDE" minOccurs="0" maxOccurs="1"/>       <!--11 byte -->
+                          <xsd:element type="xsd:string" name="CARRIAGE_NO" minOccurs="0" maxOccurs="1"/>        <!--1 byte -->
+                          <xsd:element type="xsd:string" name="SB_N_BEAM" minOccurs="0" maxOccurs="1"/>       <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="FULL_SB_N_BEAM" minOccurs="0" maxOccurs="1"/>   <!-- 250 byte -->
+                          <xsd:element type="xsd:string" name="SB_JOB_TYPE_IDE" minOccurs="0" maxOccurs="1"/>  <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="SB_INST_DATE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="SB_INST_DEPOT" minOccurs="0" maxOccurs="1"/>     <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="SB_MANUF_DATE" minOccurs="0" maxOccurs="1"/>     <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="SB_MANUF_DEPOT" minOccurs="0" maxOccurs="1"/>    <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="SPRING_BEAM_CHANGE" minOccurs="0" maxOccurs="1"/>   <!--1 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="LATERAL_FRAME" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>       <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_RT_IDE" minOccurs="0" maxOccurs="1"/>        <!--11 byte -->
+                          <xsd:element type="xsd:string" name="CARRIAGE_NO" minOccurs="0" maxOccurs="1"/>        <!--1 byte -->
+                          <xsd:element type="xsd:string" name="SIDE" minOccurs="0" maxOccurs="1"/>           <!-- 6 byte -->
+                          <xsd:element type="xsd:string" name="FRAME_NO" minOccurs="0" maxOccurs="1"/>         <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="FULL_FRAME_NO" minOccurs="0" maxOccurs="1"/>    <!-- 250 byte -->
+                          <xsd:element type="xsd:string" name="JOB_RPR_TYPE" minOccurs="0" maxOccurs="1"/>     <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="INST_DATE" minOccurs="0" maxOccurs="1"/>         <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="INST_DEPOT" minOccurs="0" maxOccurs="1"/>       <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="MANUF_DATE" minOccurs="0" maxOccurs="1"/>       <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="MANUF_DEPOT" minOccurs="0" maxOccurs="1"/>      <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="FRAME_CHANGE" minOccurs="0" maxOccurs="1"/>        <!--11 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="CONNECT_BEAM" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>            <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_RT_IDE" minOccurs="0" maxOccurs="1"/>         <!-- 11 byte -->
+                          <xsd:element type="xsd:string" name="CARRIAGE_NO" minOccurs="0" maxOccurs="1"/>           <!--1 byte -->
+                          <xsd:element type="xsd:string" name="CB_N_CONNECT_BEAM" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="FULL_CB_N_CONNECT_BEAM" minOccurs="0" maxOccurs="1"/>  <!-- 250 byte -->
+                          <xsd:element type="xsd:string" name="CB_JOB_TYPE" minOccurs="0" maxOccurs="1"/>        <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="CB_INST_DATE" minOccurs="0" maxOccurs="1"/>         <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CB_INST_DEPOT" minOccurs="0" maxOccurs="1"/>        <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="CB_MANUF_DATE" minOccurs="0" maxOccurs="1"/>         <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="CB_MANUF_DEPOT" minOccurs="0" maxOccurs="1"/>        <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="CONNECT_BEAM_CHANGE" minOccurs="0" maxOccurs="1"/>       <!--1 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_CONT_PASSPInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_CONT_PASSPOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="CONT_TEC" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CONT_NO" minOccurs="0" maxOccurs="1"/>      <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="PAYLOAD" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="TOTAL_CAPACITY" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="OWNER_OKPO" minOccurs="0" maxOccurs="1"/>        <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="OWNER_NAME" minOccurs="0" maxOccurs="1"/>        <!-- 255 byte -->
+                          <xsd:element type="xsd:string" name="CONT_TYPE_CODE" minOccurs="0" maxOccurs="1"/>   <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="LENGTH_FOOT" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="HEIGHT_MNEMOCODE" minOccurs="0" maxOccurs="1"/>   <!-- ?? -->
+                          <xsd:element type="xsd:string" name="OWN_CONT_WTT" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="MAX_GROSS_WTT" minOccurs="0" maxOccurs="1"/>   <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>       <!-- 19 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+	  <!-- new -->
+      <xsd:element name="GET_DATA_ACT_RENT_RWCInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_ACT_RENT_RWCOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ACT_RENT_RWC" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="RWC_TYPE" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="RWC_TYPE_NAME" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="LEASE_TYPE" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="DOG_CODE" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="DOG_IDE_1C" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="FIRM_IDE_1C" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="RWC_BALANCE_VAL" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="RWC_DATE_LEASE_BEGIN" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="RWC_DATE_LEASE_END" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="ACT_CODE" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="ACT_DATE" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="ACT_CODE_OUT" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="ACT_DATE_OUT" minOccurs="0" maxOccurs="1"/>
+                          <xsd:element type="xsd:string" name="UPDATE_DATE" minOccurs="0" maxOccurs="1"/>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+	  <!-- new -->
+
+      <xsd:element name="GET_DATA_CONT_DISL_DEPInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_ST_START_NO-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_CONT_DISL_DEPOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="CONT_DISL" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CONT_NO" minOccurs="0" maxOccurs="1"/>        <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="ST_OPER_NO" minOccurs="0" maxOccurs="1"/>     <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_IDE_COD" minOccurs="0" maxOccurs="1"/>        <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="OPER_NO_CCODE" minOccurs="0" maxOccurs="1"/>       <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="DATE_OPER" minOccurs="0" maxOccurs="1"/>            <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="NAKL" minOccurs="0" maxOccurs="1"/>                  <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>                 <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="DATE_B" minOccurs="0" maxOccurs="1"/>                <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_E" minOccurs="0" maxOccurs="1"/>                <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_START_NO" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_START_COD" minOccurs="0" maxOccurs="1"/>     <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="CARGO_NO" minOccurs="0" maxOccurs="1"/>           <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="WTT" minOccurs="0" maxOccurs="1"/>                 <!-- 6 byte -->
+                          <xsd:element type="xsd:string" name="ST_DEST_NO" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_DEST_COD" minOccurs="0" maxOccurs="1"/>      <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_NO" minOccurs="0" maxOccurs="1"/>         <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_IND" minOccurs="0" maxOccurs="1"/>          <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="OTGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>     <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="POGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>     <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_DATE_EXPIRE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CURR_T_DIST" minOccurs="0" maxOccurs="1"/>        <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="DATE_LEAS_B" minOccurs="0" maxOccurs="1"/>        <!-- ?? -->
+                          <xsd:element type="xsd:string" name="USER_NOTE_CO" minOccurs="0" maxOccurs="1"/>      <!-- 4000 byte -->
+                          <xsd:element type="xsd:string" name="DATE_STOCK_D" minOccurs="0" maxOccurs="1"/>     <!-- ?? -->
+                          <xsd:element type="xsd:string" name="APPLIC_NO" minOccurs="0" maxOccurs="1"/>        <!-- ?? -->
+                          <xsd:element type="xsd:string" name="CONTRACT_NO" minOccurs="0" maxOccurs="1"/>     <!-- ?? -->
+                          <xsd:element type="xsd:string" name="DESTINATION" minOccurs="0" maxOccurs="1"/>     <!-- ?? -->
+                          <xsd:element type="xsd:string" name="OWNER_CUR_NAME" minOccurs="0" maxOccurs="1"/>  <!-- ?? -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_CONT_DISL_ARRInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_BEGIN_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_END_DATE-TIMESTAMP-IN" type="xsd:dateTime"/>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_ST_DEST_NO-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_CONT_DISL_ARROutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="CONT_DISL" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CONT_NO" minOccurs="0" maxOccurs="1"/>        <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="ST_OPER_NO" minOccurs="0" maxOccurs="1"/>     <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_IDE_COD" minOccurs="0" maxOccurs="1"/>        <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="OPER_NO_CCODE" minOccurs="0" maxOccurs="1"/>       <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="DATE_OPER" minOccurs="0" maxOccurs="1"/>            <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="NAKL" minOccurs="0" maxOccurs="1"/>                  <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>                 <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="DATE_B" minOccurs="0" maxOccurs="1"/>                <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_E" minOccurs="0" maxOccurs="1"/>                <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_START_NO" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_START_COD" minOccurs="0" maxOccurs="1"/>     <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="CARGO_NO" minOccurs="0" maxOccurs="1"/>           <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="WTT" minOccurs="0" maxOccurs="1"/>                 <!-- 6 byte -->
+                          <xsd:element type="xsd:string" name="ST_DEST_NO" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="RLW_DEST_COD" minOccurs="0" maxOccurs="1"/>      <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_NO" minOccurs="0" maxOccurs="1"/>         <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_IND" minOccurs="0" maxOccurs="1"/>          <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="OTGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>     <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="POGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>     <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_DATE_EXPIRE" minOccurs="0" maxOccurs="1"/>    <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="CURR_T_DIST" minOccurs="0" maxOccurs="1"/>        <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="DATE_LEAS_B" minOccurs="0" maxOccurs="1"/>        <!-- ?? -->
+                          <xsd:element type="xsd:string" name="USER_NOTE_CO" minOccurs="0" maxOccurs="1"/>      <!-- 4000 byte -->
+                          <xsd:element type="xsd:string" name="DATE_STOCK_D" minOccurs="0" maxOccurs="1"/>     <!-- ?? -->
+                          <xsd:element type="xsd:string" name="APPLIC_NO" minOccurs="0" maxOccurs="1"/>        <!-- ?? -->
+                          <xsd:element type="xsd:string" name="CONTRACT_NO" minOccurs="0" maxOccurs="1"/>     <!-- ?? -->
+                          <xsd:element type="xsd:string" name="DESTINATION" minOccurs="0" maxOccurs="1"/>     <!-- ?? -->
+                          <xsd:element type="xsd:string" name="OWNER_CUR_NAME" minOccurs="0" maxOccurs="1"/>  <!-- ?? -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GET_DATA_CONT_DISLInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="IN_PAS-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="IN_USER_NAME-VARCHAR2-IN" type="xsd:string"/>
+              <xsd:element name="OUT_MESSAGE-XMLTYPE-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="OUT_RESULT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="GET_DATA_CONT_DISLOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="OUT_MESSAGE">
+                 <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="INFO">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="CONT_DISL" maxOccurs="unbounded" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element type="xsd:string" name="CONT_NO" minOccurs="0" maxOccurs="1"/>         <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="ST_OPER_NO" minOccurs="0" maxOccurs="1"/>            <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="OPER_NO_CCODE" minOccurs="0" maxOccurs="1"/>         <!-- 2 byte -->
+                          <xsd:element type="xsd:string" name="DATE_OPER" minOccurs="0" maxOccurs="1"/>        <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ARRV_DATE_POGR" minOccurs="0" maxOccurs="1"/> <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="DATE_RASCR" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="NAKL" minOccurs="0" maxOccurs="1"/>    <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="RWC_NO" minOccurs="0" maxOccurs="1"/>     <!-- 8 byte -->
+                          <xsd:element type="xsd:string" name="DATE_L" minOccurs="0" maxOccurs="1"/>         <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="ST_START_NO" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="CARGO_NO" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="WT_WEIGHT_ADD" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="ST_DEST_NO" minOccurs="0" maxOccurs="1"/>   <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_NO" minOccurs="0" maxOccurs="1"/>       <!-- 4 byte -->
+                          <xsd:element type="xsd:string" name="TRAIN_IND" minOccurs="0" maxOccurs="1"/>     <!-- 13 byte -->
+                          <xsd:element type="xsd:string" name="PR_GRUJ" minOccurs="0" maxOccurs="1"/>             <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="PR_WORK" minOccurs="0" maxOccurs="1"/>               <!-- 1 byte -->
+                          <xsd:element type="xsd:string" name="OTGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>   <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="POGOKPO_POGRUZ" minOccurs="0" maxOccurs="1"/>   <!-- 15 byte -->
+                          <xsd:element type="xsd:string" name="ETR_DATE_EXPIRE" minOccurs="0" maxOccurs="1"/>  <!-- 10 byte -->
+                          <xsd:element type="xsd:string" name="POLUCH_POGR" minOccurs="0" maxOccurs="1"/>       <!-- 50 byte -->
+                          <xsd:element type="xsd:string" name="SN_PROGNOZ_TEK" minOccurs="0" maxOccurs="1"/>     <!-- 19 byte -->
+                          <xsd:element type="xsd:string" name="TARIFF_DIST" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="TIME_TO_DIST" minOccurs="0" maxOccurs="1"/>       <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="CURR_T_DIST" minOccurs="0" maxOccurs="1"/>         <!-- 5 byte -->
+                          <xsd:element type="xsd:string" name="CURR_TIME_TO_DIST" minOccurs="0" maxOccurs="1"/>    <!-- 5 byte -->
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                  </xsd:sequence>
+                 </xsd:complexType>
+                </xsd:element>
+              <xsd:element name="OUT_RESULT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+   </xsd:schema>
+  </types>
+
+  <message name="GET_DATA_RWC_DISL_DEPInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RWC_DISL_DEPInput"/>
+  </message>
+
+  <message name="GET_DATA_RWC_DISL_DEPOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RWC_DISL_DEPOutput"/>
+  </message>
+
+  <message name="GET_DATA_RWC_DISL_ARRInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RWC_DISL_ARRInput"/>
+  </message>
+
+  <message name="GET_DATA_RWC_DISL_ARROutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RWC_DISL_ARROutput"/>
+  </message>
+
+  <message name="GET_DATA_RWC_DISLInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RWC_DISLInput"/>
+  </message>
+
+  <message name="GET_DATA_RWC_DISLOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RWC_DISLOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_STATIONInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_STATIONInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_STATIONOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_STATIONOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_SERVICE_TYPEInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_SERVICE_TYPEInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_SERVICE_TYPEOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_SERVICE_TYPEOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_TYPEInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_TYPEInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_TYPEOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_TYPEOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_OWNERInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_OWNERInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_OWNEROutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_OWNEROutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_MODELInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_MODELInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_MODELOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_MODELOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_GROUPInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_GROUPInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_GROUPOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_GROUPOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_FAULT_CAUSEInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_FAULT_CAUSEInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_FAULT_CAUSEOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_FAULT_CAUSEOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_FAULTInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_FAULTInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_FAULTOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_FAULTOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_CNDInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_CNDInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RWC_CNDOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RWC_CNDOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_CONT_OWNERInputMessage">
+	  <part name="parameters" element="tns:GET_DATA_RFT_CONT_OWNERInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_CONT_OWNEROutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_CONT_OWNEROutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RLW_DEPInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RLW_DEPInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RLW_DEPOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RLW_DEPOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_REPAIR_TYPEInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_REPAIR_TYPEInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_REPAIR_TYPEOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_REPAIR_TYPEOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RAILWAYInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RAILWAYInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_RAILWAYOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_RAILWAYOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_OPERATIONInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_OPERATIONInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_OPERATIONOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_OPERATIONOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_FIRM_CODEInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_FIRM_CODEInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_FIRM_CODEOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_FIRM_CODEOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_DEPOInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_DEPOInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_DEPOOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_DEPOOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_COUNTRYInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_COUNTRYInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_COUNTRYOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_COUNTRYOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_CONT_TYPEInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_CONT_TYPEInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_CONT_TYPEOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_CONT_TYPEOutput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_CARGO_ETSNGInputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_CARGO_ETSNGInput"/>
+  </message>
+
+  <message name="GET_DATA_RFT_CARGO_ETSNGOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_RFT_CARGO_ETSNGOutput"/>
+  </message>
+
+  <message name="GET_DATA_REPAIRInputMessage">
+    <part name="parameters" element="tns:GET_DATA_REPAIRInput"/>
+  </message>
+
+  <message name="GET_DATA_REPAIROutputMessage">
+    <part name="parameters" element="tns:GET_DATA_REPAIROutput"/>
+  </message>
+
+  <message name="GET_DATA_PROBEGInputMessage">
+    <part name="parameters" element="tns:GET_DATA_PROBEGInput"/>
+  </message>
+
+  <message name="GET_DATA_PROBEGOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_PROBEGOutput"/>
+  </message>
+
+  <message name="GET_DATA_PASSPInputMessage">
+    <part name="parameters" element="tns:GET_DATA_PASSPInput"/>
+  </message>
+
+  <message name="GET_DATA_PASSPOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_PASSPOutput"/>
+  </message>
+
+  <message name="GET_DATA_DETAILInputMessage">
+    <part name="parameters" element="tns:GET_DATA_DETAILInput"/>
+  </message>
+
+  <message name="GET_DATA_DETAILOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_DETAILOutput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_PASSPInputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_PASSPInput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_PASSPOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_PASSPOutput"/>
+  </message>
+
+  <message name="GET_DATA_ACT_RENT_RWCInputMessage">
+    <part name="parameters" element="tns:GET_DATA_ACT_RENT_RWCInput"/>
+  </message>
+
+  <message name="GET_DATA_ACT_RENT_RWCOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_ACT_RENT_RWCOutput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_DISL_DEPInputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_DISL_DEPInput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_DISL_DEPOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_DISL_DEPOutput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_DISL_ARRInputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_DISL_ARRInput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_DISL_ARROutputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_DISL_ARROutput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_DISLInputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_DISLInput"/>
+  </message>
+
+  <message name="GET_DATA_CONT_DISLOutputMessage">
+    <part name="parameters" element="tns:GET_DATA_CONT_DISLOutput"/>
+  </message>
+
+  <portType name="GET_DATAPortType">
+  <operation name="GET_DATA_RWC_DISL_DEP">
+      <input message="tns:GET_DATA_RWC_DISL_DEPInputMessage"/>
+      <output message="tns:GET_DATA_RWC_DISL_DEPOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RWC_DISL_ARR">
+      <input message="tns:GET_DATA_RWC_DISL_ARRInputMessage"/>
+      <output message="tns:GET_DATA_RWC_DISL_ARROutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RWC_DISL">
+      <input message="tns:GET_DATA_RWC_DISLInputMessage"/>
+      <output message="tns:GET_DATA_RWC_DISLOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_STATION">
+      <input message="tns:GET_DATA_RFT_STATIONInputMessage"/>
+      <output message="tns:GET_DATA_RFT_STATIONOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_SERVICE_TYPE">
+      <input message="tns:GET_DATA_RFT_SERVICE_TYPEInputMessage"/>
+      <output message="tns:GET_DATA_RFT_SERVICE_TYPEOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_TYPE">
+      <input message="tns:GET_DATA_RFT_RWC_TYPEInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_TYPEOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_OWNER">
+      <input message="tns:GET_DATA_RFT_RWC_OWNERInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_OWNEROutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_MODEL">
+      <input message="tns:GET_DATA_RFT_RWC_MODELInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_MODELOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_GROUP">
+      <input message="tns:GET_DATA_RFT_RWC_GROUPInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_GROUPOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_FAULT_CAUSE">
+      <input message="tns:GET_DATA_RFT_RWC_FAULT_CAUSEInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_FAULT_CAUSEOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_FAULT">
+      <input message="tns:GET_DATA_RFT_RWC_FAULTInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_FAULTOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RWC_CND">
+      <input message="tns:GET_DATA_RFT_RWC_CNDInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RWC_CNDOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_CONT_OWNER">
+      <input message="tns:GET_DATA_RFT_CONT_OWNERInputMessage"/>
+      <output message="tns:GET_DATA_RFT_CONT_OWNEROutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RLW_DEP">
+      <input message="tns:GET_DATA_RFT_RLW_DEPInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RLW_DEPOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_REPAIR_TYPE">
+      <input message="tns:GET_DATA_RFT_REPAIR_TYPEInputMessage"/>
+      <output message="tns:GET_DATA_RFT_REPAIR_TYPEOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_RAILWAY">
+      <input message="tns:GET_DATA_RFT_RAILWAYInputMessage"/>
+      <output message="tns:GET_DATA_RFT_RAILWAYOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_OPERATION">
+      <input message="tns:GET_DATA_RFT_OPERATIONInputMessage"/>
+      <output message="tns:GET_DATA_RFT_OPERATIONOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_FIRM_CODE">
+      <input message="tns:GET_DATA_RFT_FIRM_CODEInputMessage"/>
+      <output message="tns:GET_DATA_RFT_FIRM_CODEOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_DEPO">
+      <input message="tns:GET_DATA_RFT_DEPOInputMessage"/>
+      <output message="tns:GET_DATA_RFT_DEPOOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_COUNTRY">
+      <input message="tns:GET_DATA_RFT_COUNTRYInputMessage"/>
+      <output message="tns:GET_DATA_RFT_COUNTRYOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_CONT_TYPE">
+      <input message="tns:GET_DATA_RFT_CONT_TYPEInputMessage"/>
+      <output message="tns:GET_DATA_RFT_CONT_TYPEOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_RFT_CARGO_ETSNG">
+      <input message="tns:GET_DATA_RFT_CARGO_ETSNGInputMessage"/>
+      <output message="tns:GET_DATA_RFT_CARGO_ETSNGOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_REPAIR">
+      <input message="tns:GET_DATA_REPAIRInputMessage"/>
+      <output message="tns:GET_DATA_REPAIROutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_PROBEG">
+      <input message="tns:GET_DATA_PROBEGInputMessage"/>
+      <output message="tns:GET_DATA_PROBEGOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_PASSP">
+      <input message="tns:GET_DATA_PASSPInputMessage"/>
+      <output message="tns:GET_DATA_PASSPOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_DETAIL">
+      <input message="tns:GET_DATA_DETAILInputMessage"/>
+      <output message="tns:GET_DATA_DETAILOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_CONT_PASSP">
+      <input message="tns:GET_DATA_CONT_PASSPInputMessage"/>
+      <output message="tns:GET_DATA_CONT_PASSPOutputMessage"/>
+    </operation>
+
+  <operation name="GET_DATA_ACT_RENT_RWC">
+      <input message="tns:GET_DATA_ACT_RENT_RWCInputMessage"/>
+      <output message="tns:GET_DATA_ACT_RENT_RWCOutputMessage"/>
+    </operation>
+
+  <operation name="GET_DATA_CONT_DISL_DEP">
+      <input message="tns:GET_DATA_CONT_DISL_DEPInputMessage"/>
+      <output message="tns:GET_DATA_CONT_DISL_DEPOutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_CONT_DISL_ARR">
+      <input message="tns:GET_DATA_CONT_DISL_ARRInputMessage"/>
+      <output message="tns:GET_DATA_CONT_DISL_ARROutputMessage"/>
+    </operation>
+  <operation name="GET_DATA_CONT_DISL">
+      <input message="tns:GET_DATA_CONT_DISLInputMessage"/>
+      <output message="tns:GET_DATA_CONT_DISLOutputMessage"/>
+    </operation>
+  </portType>
+
+  <binding name="GET_DATABinding"
+           type="tns:GET_DATAPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GET_DATA_RWC_DISL_DEP">
+      <soap:operation
+ soapAction="GET_DATA_RWC_DISL_DEP"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RWC_DISL_ARR">
+      <soap:operation
+ soapAction="GET_DATA_RWC_DISL_ARR"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RWC_DISL">
+      <soap:operation
+ soapAction="GET_DATA_RWC_DISL"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_STATION">
+      <soap:operation
+ soapAction="GET_DATA_RFT_STATION"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_SERVICE_TYPE">
+      <soap:operation
+ soapAction="GET_DATA_RFT_SERVICE_TYPE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_TYPE">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_TYPE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_OWNER">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_OWNER"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_MODEL">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_MODEL"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_GROUP">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_GROUP"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_FAULT_CAUSE">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_FAULT_CAUSE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_FAULT">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_FAULT"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RWC_CND">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RWC_CND"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_CONT_OWNER">
+      <soap:operation
+ soapAction="GET_DATA_RFT_CONT_OWNER"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RLW_DEP">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RLW_DEP"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_REPAIR_TYPE">
+      <soap:operation
+ soapAction="GET_DATA_RFT_REPAIR_TYPE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_RAILWAY">
+      <soap:operation
+ soapAction="GET_DATA_RFT_RAILWAY"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_OPERATION">
+      <soap:operation
+ soapAction="GET_DATA_RFT_OPERATION"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_FIRM_CODE">
+      <soap:operation
+ soapAction="GET_DATA_RFT_FIRM_CODE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_DEPO">
+      <soap:operation
+ soapAction="GET_DATA_RFT_DEPO"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_COUNTRY">
+      <soap:operation
+ soapAction="GET_DATA_RFT_COUNTRY"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_CONT_TYPE">
+      <soap:operation
+ soapAction="GET_DATA_RFT_CONT_TYPE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_RFT_CARGO_ETSNG">
+      <soap:operation
+ soapAction="GET_DATA_RFT_CARGO_ETSNG"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_REPAIR">
+      <soap:operation
+ soapAction="GET_DATA_REPAIR"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_PROBEG">
+      <soap:operation
+ soapAction="GET_DATA_PROBEG"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_PASSP">
+      <soap:operation
+ soapAction="GET_DATA_PASSP"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_DETAIL">
+      <soap:operation
+ soapAction="GET_DATA_DETAIL"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+	<!-- new -->
+    <operation name="GET_DATA_ACT_RENT_RWC">
+      <soap:operation
+ soapAction="GET_DATA_ACT_RENT_RWC"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+	<!-- new -->
+    <operation name="GET_DATA_CONT_PASSP">
+      <soap:operation
+ soapAction="GET_DATA_CONT_PASSP"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_CONT_DISL_DEP">
+      <soap:operation
+ soapAction="GET_DATA_CONT_DISL_DEP"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_CONT_DISL_ARR">
+      <soap:operation
+ soapAction="GET_DATA_CONT_DISL_ARR"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+    <operation name="GET_DATA_CONT_DISL">
+      <soap:operation
+ soapAction="GET_DATA_CONT_DISL"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="GET_DATAService">
+    <documentation>Oracle Web Service</documentation>
+    <port name="GET_DATAPort" binding="tns:GET_DATABinding">
+       <soap:address
+             location="***"/>
+     </port>
+  </service>
+
+</definitions>
