@@ -207,8 +207,8 @@ class Command(BaseCommand):
         start_time = datetime.now()
         print('Start', start_time)
 
-        begin_date = datetime(2021, 1, 1)
-        end_date = datetime(2022, 2, 2)
+        begin_date = datetime(2022, 1, 1)
+        end_date = datetime(2022, 2, 15)
 
         # update_rft_firm_code(mc_tracking_service,
         #                      WSDL_USER,

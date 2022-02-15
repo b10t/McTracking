@@ -171,7 +171,47 @@ class RftRailway(models.Model):
         verbose_name_plural = 'Дороги'
         ordering = ['rlw_name']
 
-        # <RLW_CODE > 13 < /RLW_CODE >
-        # <RLW_NAME > БЕЛ < /RLW_NAME >
-        # <RLW_FULL_NAME > БЕЛОРУССКАЯ < /RLW_FULL_NAME >
-        # <CNTR_IDE > 112 < /CNTR_IDE >
+
+class RftRlwDep(models.Model):
+    """Справочник отделений."""
+    rdep_ide = models.IntegerField(
+        primary_key=True,
+        verbose_name='Идентификатор отделения'
+    )
+    rdep_code = models.CharField(
+        max_length=2,
+        verbose_name='Код отделения'
+    )
+    rdep_name = models.CharField(
+        max_length=100,
+        verbose_name='Краткое наименование отделения'
+    )
+    rdep_full_name = models.CharField(
+        max_length=100,
+        verbose_name='Наименование отделения'
+    )
+    rlw_code = models.ForeignKey(
+        RftRailway,
+        on_delete=models.PROTECT,
+        verbose_name='Дорога'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.rdep_ide} - {self.rdep_full_name}'
+
+    class Meta:
+        db_table = 'RFT_RLW_DEP'
+        verbose_name = 'Отделение'
+        verbose_name_plural = 'Отделения'
+        ordering = ['rdep_ide']
+
+        # <RDEP_IDE > 5111 < /RDEP_IDE >
+        # <RDEP_CODE > 11 < /RDEP_CODE >
+        # <RDEP_NAME > Туапсинское < /RDEP_NAME >
+        # <RDEP_FULL_NAME > Туапсинское < /RDEP_FULL_NAME >
+        # <RLW_CODE > 51 < /RLW_CODE >
+        # <UPDATE_DATE > 18.11.2021 15: 49: 52 < /UPDATE_DATE >
