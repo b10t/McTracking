@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.timezone import localtime
 from mc_references.models import (RftCargoEtsng, RftCountry, RftFirmCode,
-                                  RftOperation, RftRailway)
+                                  RftOperation, RftRailway, RftRlwDep)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -196,6 +196,45 @@ def update_rft_railway(service,
                 update_date=convert_str_to_datetime(railway['UPDATE_DATE']))
 
 
+def update_rft_rlw_dep(service,
+                       wsdl_user,
+                       wsdl_password,
+                       begin_date,
+                       end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_RLW_DEP
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for dep in response:
+            dep_new, _ = RftRlwDep.objects.get_or_create(
+                rdep_ide=dep['RDEP_IDE'],
+                rdep_code=str(dep['RDEP_CODE']).rjust(2, "0"),
+                rdep_name=str(dep['RDEP_NAME']).upper(),
+                rdep_full_name=str(dep['RDEP_FULL_NAME']).upper(),
+                rlw_code=RftRailway.objects.get(
+                    pk=str(dep["RLW_CODE"]).rjust(2, "0")),
+                update_date=convert_str_to_datetime(dep['UPDATE_DATE']))
+
+        # <RDEP_IDE > 5111 < /RDEP_IDE >
+        # <RDEP_CODE > 11 < /RDEP_CODE >
+        # <RDEP_NAME > Туапсинское < /RDEP_NAME >
+        # <RDEP_FULL_NAME > Туапсинское < /RDEP_FULL_NAME >
+        # <RLW_CODE > 51 < /RLW_CODE >
+        # <UPDATE_DATE > 18.11.2021 15: 49: 52 < /UPDATE_DATE >
+
+
+('rdep_ide', 'rdep_code', 'rdep_name', 'rdep_full_name', 'rlw_code', 'update_date', )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -207,7 +246,7 @@ class Command(BaseCommand):
         start_time = datetime.now()
         print('Start', start_time)
 
-        begin_date = datetime(2022, 1, 1)
+        begin_date = datetime(2021, 1, 1)
         end_date = datetime(2022, 2, 15)
 
         # update_rft_firm_code(mc_tracking_service,
@@ -230,7 +269,12 @@ class Command(BaseCommand):
         #                        WSDL_PASSWORD,
         #                        begin_date,
         #                        end_date)
-        update_rft_railway(mc_tracking_service,
+        # update_rft_railway(mc_tracking_service,
+        #                    WSDL_USER,
+        #                    WSDL_PASSWORD,
+        #                    begin_date,
+        #                    end_date)
+        update_rft_rlw_dep(mc_tracking_service,
                            WSDL_USER,
                            WSDL_PASSWORD,
                            begin_date,
