@@ -16,6 +16,7 @@ from zeep.client import Client
 from zeep.exceptions import XMLParseError
 from zeep.settings import Settings
 from zeep.transports import AsyncTransport, Transport
+from zeep.helpers import serialize_object
 
 
 def get_service_wsdl(auth_user, auth_password, wsdl_address):
@@ -38,9 +39,15 @@ def get_service_wsdl(auth_user, auth_password, wsdl_address):
 
 
 def get_response_from_service(response):
+    info_ref_list = []
+
     if response['OUT_RESULT'] == 0:
-        return response['OUT_MESSAGE']['INFO']['REF']
-    return []
+        for item in response['OUT_MESSAGE']['INFO']['REF']:
+            info_ref_list.append(
+                convert_zeep_object_to_dict(item)
+            )
+
+    return info_ref_list
 
 
 def convert_str_to_datetime(update_date):
@@ -60,6 +67,27 @@ def convert_str_to_datetime(update_date):
             "%d.%m.%Y %H:%M:%S"
         )
     )
+
+
+def convert_zeep_object_to_dict(zeep_objects):
+    """Конвертирует данные полученные от сервиса.
+
+    Args:
+        zeep_objects (zeep.objects): Данные от сервиса
+
+    Returns:
+        dict: Обработанные данные
+    """
+    zeep_dict = {k.lower(): v for k, v in serialize_object(
+        zeep_objects).items()
+    }
+
+    if 'update_date' in zeep_dict:
+        zeep_dict['update_date'] = convert_str_to_datetime(
+            zeep_dict['update_date']
+        )
+
+    return zeep_dict
 
 
 def update_rft_firm_code(service,
@@ -214,15 +242,14 @@ def update_rft_rlw_dep(service,
     )
 
     with transaction.atomic():
-        for dep in response:
-            dep_new, _ = RftRlwDep.objects.get_or_create(
-                rdep_ide=dep['RDEP_IDE'],
-                rdep_code=str(dep['RDEP_CODE']).rjust(2, "0"),
-                rdep_name=str(dep['RDEP_NAME']).upper(),
-                rdep_full_name=str(dep['RDEP_FULL_NAME']).upper(),
-                rlw_code=RftRailway.objects.get(
-                    pk=str(dep["RLW_CODE"]).rjust(2, "0")),
-                update_date=convert_str_to_datetime(dep['UPDATE_DATE']))
+        for service_data in response:
+            service_data['rlw_code'] = RftRailway.objects.get(
+                pk=service_data['rlw_code'].rjust(2, "0"))
+
+            new_rec, _ = RftRlwDep.objects.update_or_create(
+                rdep_ide=service_data['rdep_ide'],
+                defaults=service_data
+            )
 
 
 class Command(BaseCommand):
