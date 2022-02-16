@@ -205,6 +205,11 @@ class RftRlwDep(models.Model):
     def __str__(self) -> str:
         return f'#{self.rdep_ide} - {self.rdep_full_name}'
 
+    def save(self, *args, **kwargs):
+        self.rdep_name = self.rdep_name.upper()
+        self.rdep_full_name = self.rdep_full_name.upper()
+        super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'RFT_RLW_DEP'
         verbose_name = 'Отделение'
