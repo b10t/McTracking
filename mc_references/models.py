@@ -395,3 +395,36 @@ class RftRwcModel(models.Model):
         verbose_name = 'Модель вагона'
         verbose_name_plural = 'Модели вагонов'
         ordering = ['rm_code']
+
+
+class RftContType(models.Model):
+    """Справочник типов контейнеров."""
+    ct_code = models.CharField(
+        primary_key=True,
+        max_length=20,
+        verbose_name='Код типа контейнера'
+    )
+    ct_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование типа контейнера'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.ct_code} - {self.ct_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRwcModel.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_CONT_TYPE'
+        verbose_name = 'Тип контейнера'
+        verbose_name_plural = 'Типы контейнеров'
+        ordering = ['ct_code']

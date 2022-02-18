@@ -4,10 +4,10 @@ from datetime import datetime
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.timezone import localtime
-from mc_references.models import (RftCargoEtsng, RftCountry, RftDepo,
-                                  RftFirmCode, RftOperation, RftRailway,
-                                  RftRlwDep, RftRwcModel, RftRwcType,
-                                  RftStation)
+from mc_references.models import (RftCargoEtsng, RftContType, RftCountry,
+                                  RftDepo, RftFirmCode, RftOperation,
+                                  RftRailway, RftRlwDep, RftRwcModel,
+                                  RftRwcType, RftStation)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -384,6 +384,31 @@ def update_rft_rwc_model(service,
             )
 
 
+def update_rft_cont_type(service,
+                         wsdl_user,
+                         wsdl_password,
+                         begin_date,
+                         end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_CONT_TYPE
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            RftContType.objects.update_or_create(
+                ct_code=service_data['ct_code'],
+                defaults=service_data
+            )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -443,7 +468,12 @@ class Command(BaseCommand):
         #                     WSDL_PASSWORD,
         #                     begin_date,
         #                     end_date)
-        update_rft_rwc_model(mc_tracking_service,
+        # update_rft_rwc_model(mc_tracking_service,
+        #                      WSDL_USER,
+        #                      WSDL_PASSWORD,
+        #                      begin_date,
+        #                      end_date)
+        update_rft_cont_type(mc_tracking_service,
                              WSDL_USER,
                              WSDL_PASSWORD,
                              begin_date,
