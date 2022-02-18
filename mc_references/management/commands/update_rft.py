@@ -5,7 +5,8 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.timezone import localtime
 from mc_references.models import (RftCargoEtsng, RftCountry, RftFirmCode,
-                                  RftOperation, RftRailway, RftRlwDep)
+                                  RftOperation, RftRailway, RftRlwDep,
+                                  RftStation)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -14,9 +15,9 @@ from requests.auth import HTTPBasicAuth
 # from zeep import AsyncClient
 from zeep.client import Client
 from zeep.exceptions import XMLParseError
+from zeep.helpers import serialize_object
 from zeep.settings import Settings
 from zeep.transports import AsyncTransport, Transport
-from zeep.helpers import serialize_object
 
 
 def get_service_wsdl(auth_user, auth_password, wsdl_address):
@@ -265,6 +266,38 @@ def update_rft_rlw_dep(service,
             )
 
 
+def update_rft_station(service,
+                       wsdl_user,
+                       wsdl_password,
+                       begin_date,
+                       end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_STATION
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            service_data['rlw_code'] = RftRailway.get_by_id(
+                service_data['rlw_code'])
+            service_data['rdep_ide'] = RftRlwDep.get_by_id(
+                service_data['rdep_ide'])
+            service_data['cntr_ide'] = RftCountry.get_by_id(
+                service_data['cntr_ide'])
+
+            RftStation.objects.update_or_create(
+                st_code=service_data['st_code'],
+                defaults=service_data
+            )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -309,6 +342,11 @@ class Command(BaseCommand):
         #                    WSDL_PASSWORD,
         #                    begin_date,
         #                    end_date)
+        update_rft_station(mc_tracking_service,
+                           WSDL_USER,
+                           WSDL_PASSWORD,
+                           begin_date,
+                           end_date)
 
         print(datetime.now() - start_time)
 

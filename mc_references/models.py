@@ -71,7 +71,8 @@ class RftCountry(models.Model):
 
     @staticmethod
     def get_by_id(pk_id: str):
-        return RftCountry.objects.get(pk=str(pk_id).rjust(3, "0"))
+        if pk_id:
+            return RftCountry.objects.get(pk=str(pk_id).rjust(3, "0"))
 
     class Meta:
         db_table = 'RFT_COUNTRY'
@@ -185,7 +186,8 @@ class RftRailway(models.Model):
 
     @staticmethod
     def get_by_id(pk_id: str):
-        return RftRailway.objects.get(pk=pk_id.rjust(2, "0"))
+        if pk_id:
+            return RftRailway.objects.get(pk=pk_id.rjust(2, "0"))
 
     class Meta:
         db_table = 'RFT_RAILWAY'
@@ -230,6 +232,11 @@ class RftRlwDep(models.Model):
         self.rdep_full_name = self.rdep_full_name.upper()
         super().save(*args, **kwargs)
 
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRlwDep.objects.get(rdep_ide=int(pk_id))
+
     class Meta:
         db_table = 'RFT_RLW_DEP'
         verbose_name = 'Отделение'
@@ -244,28 +251,34 @@ class RftStation(models.Model):
         max_length=5,
         verbose_name='Код станции'
     )
+    st_code_6 = models.CharField(
+        max_length=6,
+        verbose_name='Код станции (6-символьный)'
+    )
     st_full_name = models.CharField(
         max_length=100,
         verbose_name='Наименование станции'
     )
     rlw_code = models.ForeignKey(
         RftRailway,
+        null=True,
+        blank=True,
         on_delete=models.PROTECT,
         verbose_name='Дорога'
     )
     rdep_ide = models.ForeignKey(
         RftRlwDep,
+        null=True,
+        blank=True,
         on_delete=models.PROTECT,
         verbose_name='Отделение'
     )
     cntr_ide = models.ForeignKey(
         RftCountry,
+        null=True,
+        blank=True,
         on_delete=models.PROTECT,
         verbose_name='Страна'
-    )
-    st_code_6 = models.CharField(
-        max_length=6,
-        verbose_name='Код станции (6-символьный)'
     )
     update_date = models.DateTimeField(
         blank=True,
