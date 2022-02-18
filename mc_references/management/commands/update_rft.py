@@ -108,15 +108,20 @@ def update_rft_firm_code(service,
     )
 
     with transaction.atomic():
-        for firm in response:
-            for code in firm['CODE']:
-                firm_new, _ = RftFirmCode.objects.get_or_create(
+        for service_data in response:
+            firm_codes = service_data['code']
+            del service_data['code']
+
+            for code in firm_codes:
+                service_data['frc_code'] = code['FRC_CODE']
+                service_data['frct_ide'] = int(code['FRCT_IDE'])
+
+                RftFirmCode.objects.update_or_create(
                     frc_code=code['FRC_CODE'],
                     frct_ide=int(code['FRCT_IDE']),
-                    okpo=firm['OKPO'],
-                    frm_short_name=firm['FRM_SHORT_NAME'],
-                    frm_name=firm['FRM_NAME'],
-                    update_date=convert_str_to_datetime(firm['UPDATE_DATE']))
+                    okpo=service_data['okpo'],
+                    defaults=service_data
+                )
 
 
 def update_rft_country(service,
@@ -137,11 +142,14 @@ def update_rft_country(service,
     )
 
     with transaction.atomic():
-        for country in response:
-            country_new, _ = RftCountry.objects.get_or_create(
-                cnt_ide=str(country["CNT_IDE"]).rjust(3, "0"),
-                cnt_name=str(country['CNT_NAME']).capitalize(),
-                update_date=convert_str_to_datetime(country['UPDATE_DATE']))
+        for service_data in response:
+            service_data['cnt_ide'] = str(
+                service_data['cnt_ide']).rjust(3, "0")
+
+            RftCountry.objects.update_or_create(
+                cnt_ide=service_data['cnt_ide'],
+                defaults=service_data
+            )
 
 
 def update_rft_operation(service,
@@ -162,13 +170,15 @@ def update_rft_operation(service,
     )
 
     with transaction.atomic():
-        for operation in response:
-            operation_new, _ = RftOperation.objects.get_or_create(
-                o_code=operation['O_CODE'],
-                o_name=operation['O_NAME'],
-                o_description=operation['O_DESCRIPTION'],
-                transp_type=int(operation['TRANSP_TYPE']),
-                update_date=convert_str_to_datetime(operation['UPDATE_DATE']))
+        for service_data in response:
+            service_data['transp_type'] = int(service_data['transp_type'])
+
+            RftOperation.objects.update_or_create(
+                o_code=service_data['o_code'],
+                o_name=service_data['o_name'],
+                transp_type=service_data['transp_type'],
+                defaults=service_data
+            )
 
 
 def update_rft_cargo_etsng(service,
@@ -189,11 +199,13 @@ def update_rft_cargo_etsng(service,
     )
 
     with transaction.atomic():
-        for cargo in response:
-            cargo_new, _ = RftCargoEtsng.objects.get_or_create(
-                crg_code=int(cargo['CRG_CODE']),
-                crg_name=cargo['CRG_NAME'],
-                update_date=convert_str_to_datetime(cargo['UPDATE_DATE']))
+        for service_data in response:
+            service_data['crg_code'] = int(service_data['crg_code'])
+
+            RftCargoEtsng.objects.update_or_create(
+                crg_code=service_data['crg_code'],
+                defaults=service_data
+            )
 
 
 def update_rft_railway(service,
@@ -214,14 +226,15 @@ def update_rft_railway(service,
     )
 
     with transaction.atomic():
-        for railway in response:
-            railway_new, _ = RftRailway.objects.get_or_create(
-                rlw_code=railway['RLW_CODE'],
-                rlw_name=railway['RLW_NAME'],
-                rlw_full_name=str(railway['RLW_FULL_NAME']).upper(),
-                cntr_ide=RftCountry.objects.get(
-                    pk=str(railway["CNTR_IDE"]).rjust(3, "0")),
-                update_date=convert_str_to_datetime(railway['UPDATE_DATE']))
+        for service_data in response:
+            service_data['cntr_ide'] = RftCountry.get_by_id(
+                service_data['cntr_ide']
+            )
+
+            RftRailway.objects.update_or_create(
+                rlw_code=service_data['rlw_code'],
+                defaults=service_data
+            )
 
 
 def update_rft_rlw_dep(service,
@@ -243,10 +256,10 @@ def update_rft_rlw_dep(service,
 
     with transaction.atomic():
         for service_data in response:
-            service_data['rlw_code'] = RftRailway.objects.get(
-                pk=service_data['rlw_code'].rjust(2, "0"))
+            service_data['rlw_code'] = RftRailway.get_by_id(
+                service_data['rlw_code'])
 
-            new_rec, _ = RftRlwDep.objects.update_or_create(
+            RftRlwDep.objects.update_or_create(
                 rdep_ide=service_data['rdep_ide'],
                 defaults=service_data
             )
@@ -266,11 +279,11 @@ class Command(BaseCommand):
         begin_date = datetime(2021, 1, 1)
         end_date = datetime(2022, 2, 15)
 
-        # update_rft_firm_code(mc_tracking_service,
-        #                      WSDL_USER,
-        #                      WSDL_PASSWORD,
-        #                      begin_date,
-        #                      end_date)
+        update_rft_firm_code(mc_tracking_service,
+                             WSDL_USER,
+                             WSDL_PASSWORD,
+                             begin_date,
+                             end_date)
         # update_rft_country(mc_tracking_service,
         #                    WSDL_USER,
         #                    WSDL_PASSWORD,
@@ -291,11 +304,11 @@ class Command(BaseCommand):
         #                    WSDL_PASSWORD,
         #                    begin_date,
         #                    end_date)
-        update_rft_rlw_dep(mc_tracking_service,
-                           WSDL_USER,
-                           WSDL_PASSWORD,
-                           begin_date,
-                           end_date)
+        # update_rft_rlw_dep(mc_tracking_service,
+        #                    WSDL_USER,
+        #                    WSDL_PASSWORD,
+        #                    begin_date,
+        #                    end_date)
 
         print(datetime.now() - start_time)
 

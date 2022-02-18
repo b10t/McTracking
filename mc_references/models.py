@@ -65,6 +65,14 @@ class RftCountry(models.Model):
     def __str__(self) -> str:
         return f'#{self.cnt_ide} - {self.cnt_name}'
 
+    def save(self, *args, **kwargs):
+        self.cnt_name = self.cnt_name.capitalize()
+        super().save(*args, **kwargs)
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        return RftCountry.objects.get(pk=str(pk_id).rjust(3, "0"))
+
     class Meta:
         db_table = 'RFT_COUNTRY'
         verbose_name = 'Страна'
@@ -130,6 +138,10 @@ class RftCargoEtsng(models.Model):
     def __str__(self) -> str:
         return f'#{self.crg_code} - {self.crg_name}'
 
+    def save(self, *args, **kwargs):
+        self.crg_name = self.crg_name.capitalize()
+        super().save(*args, **kwargs)
+
     class Meta:
         db_table = 'RFT_CARGO_ETSNG'
         verbose_name = 'Груз'
@@ -166,6 +178,14 @@ class RftRailway(models.Model):
 
     def __str__(self) -> str:
         return f'#{self.rlw_code} ({self.rlw_name}) - {self.rlw_full_name}'
+
+    def save(self, *args, **kwargs):
+        self.rlw_full_name = self.rlw_full_name.upper()
+        super().save(*args, **kwargs)
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        return RftRailway.objects.get(pk=pk_id.rjust(2, "0"))
 
     class Meta:
         db_table = 'RFT_RAILWAY'
