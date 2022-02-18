@@ -279,11 +279,11 @@ class Command(BaseCommand):
         begin_date = datetime(2021, 1, 1)
         end_date = datetime(2022, 2, 15)
 
-        update_rft_firm_code(mc_tracking_service,
-                             WSDL_USER,
-                             WSDL_PASSWORD,
-                             begin_date,
-                             end_date)
+        # update_rft_firm_code(mc_tracking_service,
+        #                      WSDL_USER,
+        #                      WSDL_PASSWORD,
+        #                      begin_date,
+        #                      end_date)
         # update_rft_country(mc_tracking_service,
         #                    WSDL_USER,
         #                    WSDL_PASSWORD,

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (RftCargoEtsng, RftCountry, RftFirmCode, RftOperation,
-                     RftRailway, RftRlwDep)
+                     RftRailway, RftRlwDep, RftStation)
 
 
 @admin.register(RftFirmCode)
@@ -56,3 +56,18 @@ class RftRlwDepAdmin(admin.ModelAdmin):
     search_fields = ('rlw_code',
                      'rlw_name',
                      'rlw_full_name')
+
+
+@admin.register(RftStation)
+class RftStationAdmin(admin.ModelAdmin):
+    list_display = ('st_code',
+                    'st_code_6',
+                    'st_full_name',
+                    'rlw_code',
+                    'rdep_ide',
+                    'cntr_ide',
+                    'update_date')
+    list_display_links = ('st_code',
+                          'st_full_name',
+                          'st_code_6')
+    search_fields = ('st_code', 'st_full_name', 'st_code_6')

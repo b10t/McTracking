@@ -235,3 +235,53 @@ class RftRlwDep(models.Model):
         verbose_name = 'Отделение'
         verbose_name_plural = 'Отделения'
         ordering = ['rdep_ide']
+
+
+class RftStation(models.Model):
+    """Справочник станций."""
+    st_code = models.CharField(
+        primary_key=True,
+        max_length=5,
+        verbose_name='Код станции'
+    )
+    st_full_name = models.CharField(
+        max_length=100,
+        verbose_name='Наименование станции'
+    )
+    rlw_code = models.ForeignKey(
+        RftRailway,
+        on_delete=models.PROTECT,
+        verbose_name='Дорога'
+    )
+    rdep_ide = models.ForeignKey(
+        RftRlwDep,
+        on_delete=models.PROTECT,
+        verbose_name='Отделение'
+    )
+    cntr_ide = models.ForeignKey(
+        RftCountry,
+        on_delete=models.PROTECT,
+        verbose_name='Страна'
+    )
+    st_code_6 = models.CharField(
+        max_length=6,
+        verbose_name='Код станции (6-символьный)'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.st_code} - {self.st_full_name}'
+
+    # def save(self, *args, **kwargs):
+    #     self.rdep_name = self.rdep_name.upper()
+    #     self.rdep_full_name = self.rdep_full_name.upper()
+    #     super().save(*args, **kwargs)
+
+    class Meta:
+        db_table = 'RFT_STATION'
+        verbose_name = 'Станция'
+        verbose_name_plural = 'Станции'
+        ordering = ['st_code']
