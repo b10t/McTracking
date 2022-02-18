@@ -355,10 +355,43 @@ class RftRwcType(models.Model):
     @staticmethod
     def get_by_id(pk_id: str):
         if pk_id:
-            return RftDepo.objects.get(pk=str(pk_id).rjust(2, "0"))
+            return RftRwcType.objects.get(pk=str(pk_id).rjust(2, "0"))
 
     class Meta:
         db_table = 'RFT_RWC_TYPE'
         verbose_name = 'Род вагона'
         verbose_name_plural = 'Роды вагонов'
         ordering = ['rt_code']
+
+
+class RftRwcModel(models.Model):
+    """Справочник моделей вагонов."""
+    rm_code = models.CharField(
+        primary_key=True,
+        max_length=20,
+        verbose_name='Код модели вагона'
+    )
+    rm_osob = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование модели вагона'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.rm_code} - {self.rm_osob}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRwcModel.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_RWC_MODEL'
+        verbose_name = 'Модель вагона'
+        verbose_name_plural = 'Модели вагонов'
+        ordering = ['rm_code']
