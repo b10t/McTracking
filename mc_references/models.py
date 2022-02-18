@@ -298,3 +298,44 @@ class RftStation(models.Model):
         verbose_name = 'Станция'
         verbose_name_plural = 'Станции'
         ordering = ['st_code']
+
+
+class RftDepo(models.Model):
+    """Справочник депо."""
+    dp_code = models.CharField(
+        primary_key=True,
+        max_length=4,
+        verbose_name='Код депо'
+    )
+    dp_name = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        verbose_name='Наименование депо'
+    )
+    dp_update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.dp_code} - {self.dp_name}'
+
+    # def save(self, *args, **kwargs):
+    #     self.cnt_name = self.cnt_name.capitalize()
+    #     super().save(*args, **kwargs)
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftDepo.objects.get(pk=str(pk_id).rjust(4, "0"))
+
+    class Meta:
+        db_table = 'RFT_DEPO'
+        verbose_name = 'Депо'
+        verbose_name_plural = 'Депо'
+        ordering = ['dp_code']
+
+        # <DP_CODE > 4172 < /DP_CODE >
+        # <DP_NAME > ООО "ПВК" < /DP_NAME >
+        # <DP_UPDATE_DATE > 01.06.2021 00: 00: 00 < /DP_UPDATE_DATE >

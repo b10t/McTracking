@@ -4,9 +4,9 @@ from datetime import datetime
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.timezone import localtime
-from mc_references.models import (RftCargoEtsng, RftCountry, RftFirmCode,
-                                  RftOperation, RftRailway, RftRlwDep,
-                                  RftStation)
+from mc_references.models import (RftCargoEtsng, RftCountry, RftDepo,
+                                  RftFirmCode, RftOperation, RftRailway,
+                                  RftRlwDep, RftStation)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -88,6 +88,10 @@ def convert_zeep_object_to_dict(zeep_objects):
             zeep_dict['update_date']
         )
 
+    if 'dp_update_date' in zeep_dict:
+        zeep_dict['dp_update_date'] = convert_str_to_datetime(
+            zeep_dict['dp_update_date']
+        )
     return zeep_dict
 
 
@@ -298,6 +302,34 @@ def update_rft_station(service,
             )
 
 
+def update_rft_depo(service,
+                    wsdl_user,
+                    wsdl_password,
+                    begin_date,
+                    end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_DEPO
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            service_data['dp_code'] = str(
+                service_data['dp_code']).rjust(4, "0")
+
+            RftDepo.objects.update_or_create(
+                dp_code=service_data['dp_code'],
+                defaults=service_data
+            )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -310,7 +342,7 @@ class Command(BaseCommand):
         print('Start', start_time)
 
         begin_date = datetime(2021, 1, 1)
-        end_date = datetime(2022, 2, 15)
+        end_date = datetime(2022, 2, 28)
 
         # update_rft_firm_code(mc_tracking_service,
         #                      WSDL_USER,
@@ -342,11 +374,16 @@ class Command(BaseCommand):
         #                    WSDL_PASSWORD,
         #                    begin_date,
         #                    end_date)
-        update_rft_station(mc_tracking_service,
-                           WSDL_USER,
-                           WSDL_PASSWORD,
-                           begin_date,
-                           end_date)
+        # update_rft_station(mc_tracking_service,
+        #                    WSDL_USER,
+        #                    WSDL_PASSWORD,
+        #                    begin_date,
+        #                    end_date)
+        update_rft_depo(mc_tracking_service,
+                        WSDL_USER,
+                        WSDL_PASSWORD,
+                        begin_date,
+                        end_date)
 
         print(datetime.now() - start_time)
 
