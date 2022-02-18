@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .models import (RftCargoEtsng, RftCountry, RftDepo, RftFirmCode,
-                     RftOperation, RftRailway, RftRlwDep, RftStation)
+                     RftOperation, RftRailway, RftRlwDep, RftRwcType,
+                     RftStation)
 
 
 @admin.register(RftFirmCode)
@@ -75,6 +76,13 @@ class RftStationAdmin(admin.ModelAdmin):
 
 @admin.register(RftDepo)
 class RftDepoAdmin(admin.ModelAdmin):
-    list_display = ('dp_code', 'dp_name')
+    list_display = ('dp_code', 'dp_name', 'dp_update_date')
     list_display_links = ('dp_code', 'dp_name')
     search_fields = ('dp_code', 'dp_name')
+
+
+@admin.register(RftRwcType)
+class RftRwcTypeAdmin(admin.ModelAdmin):
+    list_display = ('rt_code', 'rt_name', 'update_date')
+    list_display_links = ('rt_code', 'rt_name')
+    search_fields = ('rt_code', 'rt_name')
