@@ -428,3 +428,36 @@ class RftContType(models.Model):
         verbose_name = 'Тип контейнера'
         verbose_name_plural = 'Типы контейнеров'
         ordering = ['ct_code']
+
+
+class RftRepairType(models.Model):
+    """Справочник типов ремонтов."""
+    rpt_code = models.CharField(
+        primary_key=True,
+        max_length=2,
+        verbose_name='Код типа ремонта'
+    )
+    rpt_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование типа ремонта'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.rpt_code} - {self.rpt_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRepairType.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_REPAIR_TYPE'
+        verbose_name = 'Тип ремонта'
+        verbose_name_plural = 'Типы ремонтов'
+        ordering = ['rpt_code']
