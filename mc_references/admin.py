@@ -2,8 +2,9 @@ from django.contrib import admin
 
 from .models import (RftCargoEtsng, RftContType, RftCountry, RftDepo,
                      RftFirmCode, RftOperation, RftRailway, RftRepairType,
-                     RftRlwDep, RftRwcCnd, RftRwcFault, RftRwcModel,
-                     RftRwcType, RftServiceType, RftStation, RwcFaultCause)
+                     RftRlwDep, RftRwcCnd, RftRwcFault, RftRwcGroup,
+                     RftRwcModel, RftRwcType, RftServiceType, RftStation,
+                     RwcFaultCause)
 
 
 @admin.register(RftFirmCode)
@@ -136,3 +137,14 @@ class RftRwcCndAdmin(admin.ModelAdmin):
     list_display = ('cnd_code', 'cnd_name')
     list_display_links = ('cnd_code', 'cnd_name')
     search_fields = ('cnd_code', 'cnd_name')
+
+
+@admin.register(RftRwcGroup)
+class RftRwcGroupAdmin(admin.ModelAdmin):
+    # list_display = ('rwc_group',
+    #                 'rwc_group_name',
+    #                 'rwc_parent_group',
+    #                 'rwc_top_group',
+    #                 'update_date')
+    # list_display_links = ('rwc_group', 'rwc_group_name', 'rwc_parent_group')
+    # search_fields = ('rwc_group', 'rwc_group_name')

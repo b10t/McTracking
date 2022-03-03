@@ -7,9 +7,9 @@ from django.utils.timezone import localtime
 from mc_references.models import (RftCargoEtsng, RftContType, RftCountry,
                                   RftDepo, RftFirmCode, RftOperation,
                                   RftRailway, RftRepairType, RftRlwDep,
-                                  RftRwcCnd, RftRwcFault, RftRwcModel,
-                                  RftRwcType, RftServiceType, RftStation,
-                                  RwcFaultCause)
+                                  RftRwcCnd, RftRwcFault, RftRwcGroup,
+                                  RftRwcModel, RftRwcType, RftServiceType,
+                                  RftStation, RwcFaultCause)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -524,6 +524,40 @@ def update_rft_rwc_cnd(service,
             )
 
 
+def update_rft_rwc_group(service,
+                         wsdl_user,
+                         wsdl_password,
+                         begin_date,
+                         end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_RWC_GROUP
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            service_data['rwc_group'] = int(service_data['rwc_group'])
+
+        response = sorted(response, key=lambda i: i['rwc_group'])
+
+        for service_data in response:
+            service_data['rwc_top_group'] = int(service_data['rwc_top_group'])
+            service_data['rwc_parent_group'] = RftRwcGroup.get_by_id(
+                service_data['rwc_parent_group'])
+
+            RftRwcGroup.objects.update_or_create(
+                rwc_group=service_data['rwc_group'],
+                defaults=service_data
+            )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -609,9 +643,14 @@ class Command(BaseCommand):
         # update_rft_service_type(mc_tracking_service,
         #                         WSDL_USER,
         #                         WSDL_PASSWORD)
-        update_rft_rwc_cnd(mc_tracking_service,
-                           WSDL_USER,
-                           WSDL_PASSWORD)
+        # update_rft_rwc_cnd(mc_tracking_service,
+        #                    WSDL_USER,
+        #                    WSDL_PASSWORD)
+        update_rft_rwc_group(mc_tracking_service,
+                             WSDL_USER,
+                             WSDL_PASSWORD,
+                             begin_date,
+                             end_date)
 
         print(datetime.now() - start_time)
 

@@ -576,3 +576,44 @@ class RftRwcCnd(models.Model):
         verbose_name = 'Состояние вагона'
         verbose_name_plural = 'Состояния вагонов'
         ordering = ['cnd_code']
+
+
+class RftRwcGroup(models.Model):
+    """Справочник групп вагонов."""
+    rwc_group = models.IntegerField(
+        primary_key=True,
+        verbose_name='Код группы'
+    )
+    rwc_group_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование группы'
+    )
+    # rwc_parent_group = models.ForeignKey('self',
+    #                                      on_delete=models.SET_NULL,
+    #                                      null=True,
+    #                                      blank=True,
+    #                                      related_name='children',
+    #                                      verbose_name='Код род. группы')
+
+    rwc_top_group = models.IntegerField(
+        verbose_name='Код группы верхнего уровня')
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.rwc_group} - {self.rwc_group_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRwcGroup.objects.get(pk=int(pk_id))
+
+    class Meta:
+        db_table = 'RFT_RWC_GROUP'
+        verbose_name = 'Группа вагона'
+        verbose_name_plural = 'Группы вагонов'
+        ordering = ['rwc_group']
