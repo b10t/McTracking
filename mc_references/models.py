@@ -518,3 +518,61 @@ class RwcFaultCause(models.Model):
         verbose_name = 'Причина неисправности'
         verbose_name_plural = 'Причины неисправностей'
         ordering = ['cause_ide']
+
+
+class RftServiceType(models.Model):
+    """Справочник типов обслуживания."""
+    srvt_ide = models.CharField(
+        primary_key=True,
+        max_length=1,
+        verbose_name='Код типа'
+    )
+    srvt_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование типа'
+    )
+
+    def __str__(self) -> str:
+        return f'#{self.srvt_ide} - {self.srvt_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftServiceType.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_SERVICE_TYPE'
+        verbose_name = 'Тип обслуживания'
+        verbose_name_plural = 'Типы обслуживания'
+        ordering = ['srvt_ide']
+
+
+class RftRwcCnd(models.Model):
+    """Справочник состояния вагонов."""
+    cnd_code = models.CharField(
+        primary_key=True,
+        max_length=1,
+        verbose_name='Код состояния'
+    )
+    cnd_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование состояния'
+    )
+
+    def __str__(self) -> str:
+        return f'#{self.cnd_code} - {self.cnd_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRwcCnd.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_RWC_CND'
+        verbose_name = 'Состояние вагона'
+        verbose_name_plural = 'Состояния вагонов'
+        ordering = ['cnd_code']
