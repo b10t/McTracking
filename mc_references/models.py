@@ -461,3 +461,32 @@ class RftRepairType(models.Model):
         verbose_name = 'Тип ремонта'
         verbose_name_plural = 'Типы ремонтов'
         ordering = ['rpt_code']
+
+
+class RwcFaultCause(models.Model):
+    """Справочник причин неисправностей."""
+    cause_ide = models.CharField(
+        primary_key=True,
+        max_length=1,
+        verbose_name='Код причины'
+    )
+    cause_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование причины'
+    )
+
+    def __str__(self) -> str:
+        return f'#{self.cause_ide} - {self.cause_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RwcFaultCause.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RWC_FAULT_CAUSE'
+        verbose_name = 'Причина неисправности'
+        verbose_name_plural = 'Причины неисправностей'
+        ordering = ['cause_ide']

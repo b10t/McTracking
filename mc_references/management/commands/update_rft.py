@@ -7,7 +7,8 @@ from django.utils.timezone import localtime
 from mc_references.models import (RftCargoEtsng, RftContType, RftCountry,
                                   RftDepo, RftFirmCode, RftOperation,
                                   RftRailway, RftRepairType, RftRlwDep,
-                                  RftRwcModel, RftRwcType, RftStation)
+                                  RftRwcModel, RftRwcType, RftStation,
+                                  RwcFaultCause)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -434,6 +435,27 @@ def update_rft_repait_type(service,
             )
 
 
+def update_rft_fault_cause(service,
+                           wsdl_user,
+                           wsdl_password):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_RWC_FAULT_CAUSE
+        (
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            RwcFaultCause.objects.update_or_create(
+                cause_ide=service_data['cause_ide'],
+                defaults=service_data
+            )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -503,11 +525,14 @@ class Command(BaseCommand):
         #                      WSDL_PASSWORD,
         #                      begin_date,
         #                      end_date)
-        update_rft_repait_type(mc_tracking_service,
+        # update_rft_repait_type(mc_tracking_service,
+        #                        WSDL_USER,
+        #                        WSDL_PASSWORD,
+        #                        begin_date,
+        #                        end_date)
+        update_rft_fault_cause(mc_tracking_service,
                                WSDL_USER,
-                               WSDL_PASSWORD,
-                               begin_date,
-                               end_date)
+                               WSDL_PASSWORD)
 
         print(datetime.now() - start_time)
 
