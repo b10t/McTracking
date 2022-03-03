@@ -416,7 +416,7 @@ class RftContType(models.Model):
     @staticmethod
     def get_by_id(pk_id: str):
         if pk_id:
-            return RftRwcModel.objects.get(pk=pk_id)
+            return RftContType.objects.get(pk=pk_id)
 
     class Meta:
         db_table = 'RFT_CONT_TYPE'
