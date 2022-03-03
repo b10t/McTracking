@@ -594,11 +594,15 @@ class RftRwcGroup(models.Model):
     rwc_parent_group = models.CharField(
         default='',
         max_length=10,
+        blank=True,
+        null=True,
         verbose_name='Код род. группы'
     )
     rwc_top_group = models.CharField(
         default='',
         max_length=10,
+        blank=True,
+        null=True,
         verbose_name='Код группы верхнего уровня'
     )
     update_date = models.DateTimeField(
