@@ -590,15 +590,14 @@ class RftRwcGroup(models.Model):
         null=True,
         verbose_name='Наименование группы'
     )
-    # rwc_parent_group = models.ForeignKey('self',
-    #                                      on_delete=models.SET_NULL,
-    #                                      null=True,
-    #                                      blank=True,
-    #                                      related_name='children',
-    #                                      verbose_name='Код род. группы')
-
+    rwc_parent_group = models.IntegerField(
+        default=0,
+        verbose_name='Код род. группы'
+    )
     rwc_top_group = models.IntegerField(
-        verbose_name='Код группы верхнего уровня')
+        default=0,
+        verbose_name='Код группы верхнего уровня'
+    )
     update_date = models.DateTimeField(
         blank=True,
         null=True,

@@ -141,10 +141,10 @@ class RftRwcCndAdmin(admin.ModelAdmin):
 
 @admin.register(RftRwcGroup)
 class RftRwcGroupAdmin(admin.ModelAdmin):
-    # list_display = ('rwc_group',
-    #                 'rwc_group_name',
-    #                 'rwc_parent_group',
-    #                 'rwc_top_group',
-    #                 'update_date')
-    # list_display_links = ('rwc_group', 'rwc_group_name', 'rwc_parent_group')
-    # search_fields = ('rwc_group', 'rwc_group_name')
+    list_display = ('rwc_group',
+                    'rwc_group_name',
+                    'rwc_parent_group',
+                    'rwc_top_group',
+                    'update_date')
+    list_display_links = ('rwc_group', 'rwc_group_name', 'rwc_parent_group')
+    search_fields = ('rwc_group', 'rwc_group_name')
