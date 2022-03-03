@@ -543,15 +543,6 @@ def update_rft_rwc_group(service,
 
     with transaction.atomic():
         for service_data in response:
-            service_data['rwc_group'] = int(service_data['rwc_group'])
-
-        response = sorted(response, key=lambda i: i['rwc_group'])
-
-        for service_data in response:
-            service_data['rwc_top_group'] = int(service_data['rwc_top_group'])
-            service_data['rwc_parent_group'] = RftRwcGroup.get_by_id(
-                service_data['rwc_parent_group'])
-
             RftRwcGroup.objects.update_or_create(
                 rwc_group=service_data['rwc_group'],
                 defaults=service_data

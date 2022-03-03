@@ -580,8 +580,9 @@ class RftRwcCnd(models.Model):
 
 class RftRwcGroup(models.Model):
     """Справочник групп вагонов."""
-    rwc_group = models.IntegerField(
+    rwc_group = models.CharField(
         primary_key=True,
+        max_length=10,
         verbose_name='Код группы'
     )
     rwc_group_name = models.CharField(
@@ -590,12 +591,14 @@ class RftRwcGroup(models.Model):
         null=True,
         verbose_name='Наименование группы'
     )
-    rwc_parent_group = models.IntegerField(
-        default=0,
+    rwc_parent_group = models.CharField(
+        default='',
+        max_length=10,
         verbose_name='Код род. группы'
     )
-    rwc_top_group = models.IntegerField(
-        default=0,
+    rwc_top_group = models.CharField(
+        default='',
+        max_length=10,
         verbose_name='Код группы верхнего уровня'
     )
     update_date = models.DateTimeField(
