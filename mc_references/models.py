@@ -463,6 +463,39 @@ class RftRepairType(models.Model):
         ordering = ['rpt_code']
 
 
+class RftRwcFault(models.Model):
+    """Справочник неисправностей."""
+    flt_code = models.CharField(
+        primary_key=True,
+        max_length=3,
+        verbose_name='Код неисправности'
+    )
+    flt_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование неисправности'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.flt_code} - {self.flt_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRwcFault.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_RWC_FAULT'
+        verbose_name = 'Неисправность'
+        verbose_name_plural = 'Неисправности'
+        ordering = ['flt_code']
+
+
 class RwcFaultCause(models.Model):
     """Справочник причин неисправностей."""
     cause_ide = models.CharField(

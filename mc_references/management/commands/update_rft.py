@@ -7,8 +7,8 @@ from django.utils.timezone import localtime
 from mc_references.models import (RftCargoEtsng, RftContType, RftCountry,
                                   RftDepo, RftFirmCode, RftOperation,
                                   RftRailway, RftRepairType, RftRlwDep,
-                                  RftRwcModel, RftRwcType, RftStation,
-                                  RwcFaultCause)
+                                  RftRwcFault, RftRwcModel, RftRwcType,
+                                  RftStation, RwcFaultCause)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -435,6 +435,31 @@ def update_rft_repait_type(service,
             )
 
 
+def update_rft_rwc_fault(service,
+                         wsdl_user,
+                         wsdl_password,
+                         begin_date,
+                         end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_RWC_FAULT
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            RftRwcFault.objects.update_or_create(
+                flt_code=service_data['flt_code'],
+                defaults=service_data
+            )
+
+
 def update_rft_fault_cause(service,
                            wsdl_user,
                            wsdl_password):
@@ -530,9 +555,14 @@ class Command(BaseCommand):
         #                        WSDL_PASSWORD,
         #                        begin_date,
         #                        end_date)
-        update_rft_fault_cause(mc_tracking_service,
-                               WSDL_USER,
-                               WSDL_PASSWORD)
+        update_rft_rwc_fault(mc_tracking_service,
+                             WSDL_USER,
+                             WSDL_PASSWORD,
+                             begin_date,
+                             end_date)
+        # update_rft_fault_cause(mc_tracking_service,
+        #                        WSDL_USER,
+        #                        WSDL_PASSWORD)
 
         print(datetime.now() - start_time)
 

@@ -2,8 +2,8 @@ from django.contrib import admin
 
 from .models import (RftCargoEtsng, RftContType, RftCountry, RftDepo,
                      RftFirmCode, RftOperation, RftRailway, RftRepairType,
-                     RftRlwDep, RftRwcModel, RftRwcType, RftStation,
-                     RwcFaultCause)
+                     RftRlwDep, RftRwcFault, RftRwcModel, RftRwcType,
+                     RftStation, RwcFaultCause)
 
 
 @admin.register(RftFirmCode)
@@ -108,6 +108,13 @@ class RftRepairTypeAdmin(admin.ModelAdmin):
     list_display = ('rpt_code', 'rpt_name', 'update_date')
     list_display_links = ('rpt_code', 'rpt_name')
     search_fields = ('rpt_code', 'rpt_name')
+
+
+@admin.register(RftRwcFault)
+class RftRwcFaultAdmin(admin.ModelAdmin):
+    list_display = ('flt_code', 'flt_name', 'update_date')
+    list_display_links = ('flt_code', 'flt_name')
+    search_fields = ('flt_code', 'flt_name')
 
 
 @admin.register(RwcFaultCause)
