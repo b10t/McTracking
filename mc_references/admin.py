@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import (RftCargoEtsng, RftContType, RftCountry, RftDepo,
-                     RftFirmCode, RftOperation, RftRailway, RftRepairType,
-                     RftRlwDep, RftRwcCnd, RftRwcFault, RftRwcGroup,
-                     RftRwcModel, RftRwcOwner, RftRwcType, RftServiceType,
-                     RftStation, RwcFaultCause)
+from .models import (RftCargoEtsng, RftContOwner, RftContType, RftCountry,
+                     RftDepo, RftFirmCode, RftOperation, RftRailway,
+                     RftRepairType, RftRlwDep, RftRwcCnd, RftRwcFault,
+                     RftRwcGroup, RftRwcModel, RftRwcOwner, RftRwcType,
+                     RftServiceType, RftStation, RwcFaultCause)
 
 
 @admin.register(RftFirmCode)
@@ -155,3 +155,10 @@ class RftRwcOwnerAdmin(admin.ModelAdmin):
     list_display = ('owner_no', 'owner_name', 'parent_owner_no', 'update_date')
     list_display_links = ('owner_no', 'owner_name')
     search_fields = ('owner_no', 'owner_name')
+
+
+@admin.register(RftContOwner)
+class RftContOwnerAdmin(admin.ModelAdmin):
+    list_display = ('cont_owner_code', 'cont_owner_name')
+    list_display_links = ('cont_owner_code', 'cont_owner_name')
+    search_fields = ('cont_owner_code', 'cont_owner_name')

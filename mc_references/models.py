@@ -663,3 +663,32 @@ class RftRwcOwner(models.Model):
         verbose_name = 'Группа собственника вагона'
         verbose_name_plural = 'Группы собственников вагонов'
         ordering = ['owner_no']
+
+
+class RftContOwner(models.Model):
+    """Справочник собственников контейнеров."""
+    cont_owner_code = models.CharField(
+        primary_key=True,
+        max_length=10,
+        verbose_name='Код собственника'
+    )
+    cont_owner_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование собственника'
+    )
+
+    def __str__(self) -> str:
+        return f'#{self.cont_owner_code} - {self.cont_owner_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftContOwner.objects.get(pk=pk_id)
+
+    class Meta:
+        db_table = 'RFT_CONT_OWNER'
+        verbose_name = 'Собственник контейнера'
+        verbose_name_plural = 'Собственники контейнеров'
+        ordering = ['cont_owner_code']
