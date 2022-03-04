@@ -8,8 +8,8 @@ from mc_references.models import (RftCargoEtsng, RftContType, RftCountry,
                                   RftDepo, RftFirmCode, RftOperation,
                                   RftRailway, RftRepairType, RftRlwDep,
                                   RftRwcCnd, RftRwcFault, RftRwcGroup,
-                                  RftRwcModel, RftRwcType, RftServiceType,
-                                  RftStation, RwcFaultCause)
+                                  RftRwcModel, RftRwcOwner, RftRwcType,
+                                  RftServiceType, RftStation, RwcFaultCause)
 from McTracking.settings import (AUTH_PASSWORD, AUTH_USER, WSDL_ADDRESS,
                                  WSDL_PASSWORD, WSDL_USER)
 from pytz import timezone
@@ -549,6 +549,31 @@ def update_rft_rwc_group(service,
             )
 
 
+def update_rft_rwc_owner(service,
+                         wsdl_user,
+                         wsdl_password,
+                         begin_date,
+                         end_date):
+    response = get_response_from_service(
+        service.GET_DATA_RFT_RWC_OWNER
+        (
+            begin_date,
+            end_date,
+            wsdl_user,
+            wsdl_password,
+            '',
+            ''
+        )
+    )
+
+    with transaction.atomic():
+        for service_data in response:
+            RftRwcOwner.objects.update_or_create(
+                owner_no=service_data['owner_no'],
+                defaults=service_data
+            )
+
+
 class Command(BaseCommand):
     help = 'Update RFT from SOAP.'
 
@@ -561,7 +586,7 @@ class Command(BaseCommand):
         print('Start', start_time)
 
         begin_date = datetime(2021, 1, 1)
-        end_date = datetime(2022, 3, 3)
+        end_date = datetime(2022, 12, 31)
 
         # update_rft_firm_code(mc_tracking_service,
         #                      WSDL_USER,
@@ -637,7 +662,12 @@ class Command(BaseCommand):
         # update_rft_rwc_cnd(mc_tracking_service,
         #                    WSDL_USER,
         #                    WSDL_PASSWORD)
-        update_rft_rwc_group(mc_tracking_service,
+        # update_rft_rwc_group(mc_tracking_service,
+        #                      WSDL_USER,
+        #                      WSDL_PASSWORD,
+        #                      begin_date,
+        #                      end_date)
+        update_rft_rwc_owner(mc_tracking_service,
                              WSDL_USER,
                              WSDL_PASSWORD,
                              begin_date,

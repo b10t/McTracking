@@ -3,8 +3,8 @@ from django.contrib import admin
 from .models import (RftCargoEtsng, RftContType, RftCountry, RftDepo,
                      RftFirmCode, RftOperation, RftRailway, RftRepairType,
                      RftRlwDep, RftRwcCnd, RftRwcFault, RftRwcGroup,
-                     RftRwcModel, RftRwcType, RftServiceType, RftStation,
-                     RwcFaultCause)
+                     RftRwcModel, RftRwcOwner, RftRwcType, RftServiceType,
+                     RftStation, RwcFaultCause)
 
 
 @admin.register(RftFirmCode)
@@ -148,3 +148,10 @@ class RftRwcGroupAdmin(admin.ModelAdmin):
                     'update_date')
     list_display_links = ('rwc_group', 'rwc_group_name', 'rwc_parent_group')
     search_fields = ('rwc_group', 'rwc_group_name')
+
+
+@admin.register(RftRwcOwner)
+class RftRwcOwnerAdmin(admin.ModelAdmin):
+    list_display = ('owner_no', 'owner_name', 'parent_owner_no', 'update_date')
+    list_display_links = ('owner_no', 'owner_name')
+    search_fields = ('owner_no', 'owner_name')

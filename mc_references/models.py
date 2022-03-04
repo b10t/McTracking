@@ -623,3 +623,43 @@ class RftRwcGroup(models.Model):
         verbose_name = 'Группа вагона'
         verbose_name_plural = 'Группы вагонов'
         ordering = ['rwc_group']
+
+
+class RftRwcOwner(models.Model):
+    """Справочник групп собственников вагонов."""
+    owner_no = models.CharField(
+        primary_key=True,
+        max_length=10,
+        verbose_name='Код собственника'
+    )
+    owner_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Наименование собственника'
+    )
+    parent_owner_no = models.CharField(
+        default='',
+        max_length=10,
+        blank=True,
+        null=True,
+        verbose_name='Код род. группы'
+    )
+    update_date = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Дата обновления')
+
+    def __str__(self) -> str:
+        return f'#{self.owner_no} - {self.owner_name}'
+
+    @staticmethod
+    def get_by_id(pk_id: str):
+        if pk_id:
+            return RftRwcOwner.objects.get(pk=int(pk_id))
+
+    class Meta:
+        db_table = 'RFT_RWC_OWNER'
+        verbose_name = 'Группа собственника вагона'
+        verbose_name_plural = 'Группы собственников вагонов'
+        ordering = ['owner_no']
